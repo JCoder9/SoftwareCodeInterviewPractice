@@ -1,0 +1,67 @@
+"""
+2D Prefix Sum - Matrix Range Sum Query
+
+Problem: Find sum of any rectangular region in a matrix quickly.
+
+Visual Example:
+Matrix:        2D Prefix Sum:
+1 2 3          1  3  6
+4 5 6    →     5 12 21
+7 8 9         12 27 45
+
+Formula: prefix[i][j] = matrix[i-1][j-1] + prefix[i-1][j] + prefix[i][j-1] - prefix[i-1][j-1]
+
+To get region sum: prefix[r2+1][c2+1] - prefix[r1][c2+1] - prefix[r2+1][c1] + prefix[r1][c1]
+
+Time Complexity: O(m*n) to build, O(1) per query
+Space Complexity: O(m*n)
+"""
+
+from typing import List
+
+
+class Matrix2DPrefixSum:
+    """Compute sum of any rectangular submatrix in O(1) time."""
+    
+    def __init__(self, matrix):
+        """Build 2D prefix sum"""
+        if not matrix or not matrix[0]:
+            self.prefix = []
+            return
+        
+        rows, cols = len(matrix), len(matrix[0])
+        # Extra row and column of zeros for easier calculation
+        self.prefix = [[0] * (cols + 1) for _ in range(rows + 1)]
+        
+        for i in range(1, rows + 1):
+            for j in range(1, cols + 1):
+                self.prefix[i][j] = (matrix[i-1][j-1] + 
+                                    self.prefix[i-1][j] + 
+                                    self.prefix[i][j-1] - 
+                                    self.prefix[i-1][j-1])
+    
+    def region_sum(self, row1, col1, row2, col2):
+        """Sum of rectangle from (row1,col1) to (row2,col2) inclusive"""
+        return (self.prefix[row2+1][col2+1] - 
+                self.prefix[row1][col2+1] - 
+                self.prefix[row2+1][col1] + 
+                self.prefix[row1][col1])
+
+
+# Example
+if __name__ == "__main__":
+    matrix = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+    ]
+    ps2d = Matrix2DPrefixSum(matrix)
+    print(ps2d.region_sum(1, 1, 2, 2))  # Sum of bottom-right 2x2 = 5+6+8+9 = 28
+    # Maximal square
+    square_matrix = [
+        ["1", "0", "1", "0", "0"],
+        ["1", "0", "1", "1", "1"],
+        ["1", "1", "1", "1", "1"],
+        ["1", "0", "0", "1", "0"]
+    ]
+    print("Maximal square area:", maximal_square(square_matrix))  # 4 (2x2)
