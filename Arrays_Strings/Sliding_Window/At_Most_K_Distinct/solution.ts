@@ -9,9 +9,30 @@
  * Space Complexity: O(min(k, alphabet)) - at most k+1 chars in map before shrinking
  */
 
+// ─────────────────────────────────────────────────────────────────────────────
+// NAIVE APPROACH (Brute Force) - O(n²) time | O(k) space
+// ─────────────────────────────────────────────────────────────────────────────
+// INTERVIEW SCRIPT:
+//   1. Describe:   "Brute force checks every substring and counts distinct chars — O(n²)"
+//   2. Problem:    "Too slow for large inputs; n=10⁴ means 10⁸ operations"
+//   3. Transition: "With a sliding window we maintain a frequency map and shrink
+//                   from the left when distinct chars exceed k — drops to O(n)"
+//
+// function longestAtMostKDistinctNaive(s: string, k: number): number {
+//     let best = 0;
+//     for (let i = 0; i < s.length; i++) {
+//         for (let j = i; j < s.length; j++) {
+//             const distinct = new Set(s.slice(i, j + 1)).size;
+//             if (distinct <= k) best = Math.max(best, j - i + 1);
+//         }
+//     }
+//     return best;
+// }
+// ─────────────────────────────────────────────────────────────────────────────
+
 /**
  * Find longest substring with at most K distinct characters.
- * 
+ *
  * @param s - Input string
  * @param k - Maximum number of distinct characters allowed
  * @returns Length of longest valid substring

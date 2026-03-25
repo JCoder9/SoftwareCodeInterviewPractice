@@ -31,6 +31,9 @@ This guide categorizes all algorithm patterns by interview difficulty level to h
 - `Hashing/Seen_Set/` - Two sum, contains duplicate
 - `Hashing/Frequency_Counting/` - Character/element counting
 
+#### Stack (Critical!)
+- `Stacks_Queues/Basic_Stack/` - Valid parentheses (LC 20), Min stack (LC 155)
+
 #### Linked Lists - Basic Operations
 - `Linked_Structures/Fast_Slow_Pointers/Find_Middle/` - Find middle node
 - `Linked_Structures/Fast_Slow_Pointers/Detect_Cycle/` - Detect cycle in linked list
@@ -73,10 +76,10 @@ This guide categorizes all algorithm patterns by interview difficulty level to h
 
 #### Complete Two Pointers
 - `Two_Pointers/Opposite_Ends_Reverse/` - Reverse with conditions
-- `Two_Pointers/Fast_Slow_Cycle_Detection/` - Floyd's cycle detection
+- `Linked_Structures/Fast_Slow_Pointers/Detect_Cycle/` - Floyd's cycle detection
 
 #### Binary Search Basics
-- **Standard Binary Search** on sorted arrays
+- `Arrays_Strings/Binary_Search/Basic_Binary_Search/` - Standard binary search, search insert, find range (LC 704, 35, 34)
 - `Trees_Graphs/Binary_Search_On_Answer/Capacity_Resource_Allocation/` - Koko bananas (LC 875)
 
 #### Graph Traversals (Critical!)
@@ -90,6 +93,9 @@ This guide categorizes all algorithm patterns by interview difficulty level to h
 - `Trees_Graphs/DFS_Recursion/Common_Tree_Patterns/` - Diameter, height, paths
 - `Trees_Graphs/DFS_Recursion/Path_Tracking/` - Root to leaf paths
 - `Trees_Graphs/BFS/Level_Order_Patterns/` - Zigzag, right side view
+
+#### Backtracking (Very Common!)
+- `Trees_Graphs/DFS_Recursion/Backtracking/` - Subsets (LC 78), Permutations (LC 46), Combination Sum (LC 39)
 
 #### Standard Dynamic Programming ⭐
 - `Trees_Graphs/1D_DP/Coin_Change/` - Classic DP (LC 322)
@@ -106,9 +112,9 @@ This guide categorizes all algorithm patterns by interview difficulty level to h
 - `Core_DP/Knapsack/Coin_Change_II/` - Coin combinations (LC 518)
 
 #### String DP (Common in Mid-Level+)
-- `Trees_Graphs/String_DP/Longest_Common_Subsequence/` - LCS (LC 1143)
-- `Trees_Graphs/String_DP/Edit_Distance/` - LC 72 (very common!)
-- `Trees_Graphs/String_DP/Longest_Common_Substring/` - Continuous match
+- `Core_DP/LCS_Edit_Distance/Longest_Common_Subsequence/` - LCS (LC 1143)
+- `Core_DP/LCS_Edit_Distance/Edit_Distance/` - LC 72 (very common!)
+- `Core_DP/LCS_Edit_Distance/Longest_Common_Substring/` - Continuous match
 
 #### Heap & Priority Queue
 - `Trees_Graphs/Heap_K_Way_Merge/Kth_Largest_Element/` - Kth largest (LC 215)
@@ -166,11 +172,11 @@ This guide categorizes all algorithm patterns by interview difficulty level to h
 - `Trees_Graphs/Interval_DP/Remove_Boxes/` - LC 546 (very hard)
 
 #### Advanced String DP
-- `Trees_Graphs/String_DP/Shortest_Common_Supersequence/` - LC 1092
-- `Trees_Graphs/String_DP/Delete_Operations/` - LC 583
-- `Trees_Graphs/String_DP/Distinct_Subsequences/` - LC 115
-- `Trees_Graphs/String_DP/Wildcard_Matching/` - LC 44
-- `Trees_Graphs/String_DP/Regular_Expression_Matching/` - LC 10 (very hard!)
+- `Core_DP/LCS_Edit_Distance/Shortest_Common_Supersequence/` - LC 1092
+- `Core_DP/LCS_Edit_Distance/Delete_Operations/` - LC 583
+- `Core_DP/LCS_Edit_Distance/Distinct_Subsequences/` - LC 115
+- `Core_DP/LCS_Edit_Distance/Wildcard_Matching/` - LC 44
+- `Core_DP/LCS_Edit_Distance/Regex_Matching/` - LC 10 (very hard!)
 
 #### K-Way Merge Advanced
 - `Trees_Graphs/Heap_K_Way_Merge/Merge_K_Sorted_Arrays/` - Multiple arrays
@@ -183,7 +189,7 @@ This guide categorizes all algorithm patterns by interview difficulty level to h
 #### Advanced Graph Algorithms
 - `Trees_Graphs/BFS/Bidirectional_BFS/` - Two-way BFS optimization
 - `Trees_Graphs/BFS/Zero_One_BFS/` - 0-1 weighted graphs
-- `Trees_Graphs/DFS_Recursion/Backtracking/` - N-queens, sudoku
+- `Trees_Graphs/DFS_Recursion/Backtracking/` - Hard backtracking: N-queens (LC 51), Sudoku solver (LC 37)
 - `Trees_Graphs/DFS_Recursion/Memoization_DFS/` - DFS with memoization
 
 #### Advanced Topological Sort

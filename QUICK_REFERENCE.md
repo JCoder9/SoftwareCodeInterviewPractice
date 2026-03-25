@@ -2,7 +2,7 @@
 
 ## 🟢 JUNIOR LEVEL (Start Here!)
 
-### Top 17 Must-Know Patterns
+### Top 19 Must-Know Patterns
 
 #### Two Pointers
 1. **Two Pointers - Remove Duplicates** (`Arrays_Strings/Two_Pointers/Same_Direction_Remove_Duplicates/`)
@@ -16,8 +16,8 @@
 7. **Sliding Window - At Most K Distinct** (`Arrays_Strings/Sliding_Window/At_Most_K_Distinct/`)
 
 #### Hashing
-8. **Hash Set - Two Sum** (`Hashing/Seen_Set/`)
-9. **Frequency Counter** (`Hashing/Frequency_Counting/`)
+8. **Hash Set - Two Sum** (`Hashing/Seen_Set/Two_Sum_Classic/`)
+9. **Frequency Counter - Valid Anagram** (`Hashing/Frequency_Counting/Valid_Anagram/`)
 
 #### Linked Lists
 10. **Fast/Slow - Find Middle** (`Linked_Structures/Fast_Slow_Pointers/Find_Middle/`)
@@ -33,6 +33,12 @@
 16. **DP - House Robber** (`Trees_Graphs/1D_DP/House_Robber/`)
 17. **DP - Maximum Subarray (Kadane's)** (`Trees_Graphs/1D_DP/Maximum_Subarray_Kadane/`)
 
+#### Stack
+18. **Stack - Valid Parentheses / Min Stack** (`Stacks_Queues/Basic_Stack/`)
+
+#### Binary Search
+19. **Binary Search** (`Arrays_Strings/Binary_Search/Basic_Binary_Search/`)
+
 **Time to Master:** 2-3 months  
 **LeetCode Target:** 60-70 Easy, 15-20 Medium
 
@@ -40,27 +46,29 @@
 
 ## 🟡 MID-LEVEL (Most Interviews)
 
-### Top 20 Must-Know Patterns
+### Top 22 Must-Know Patterns
 1. **Sliding Window - Min Window** (`Arrays_Strings/Sliding_Window/Minimum_Window_Substring/`) ⭐
-2. **Graph DFS** (`Trees_Graphs/DFS_Recursion/Graph_DFS_Visited/`) ⭐⭐⭐
-3. **Graph BFS** (`Trees_Graphs/BFS/Graph_BFS/`) ⭐⭐⭐
-4. **Grid BFS** (`Trees_Graphs/BFS/Grid_BFS/`) ⭐⭐⭐
-5. **Multi-Source BFS** (`Trees_Graphs/BFS/Multi_Source/`) ⭐⭐
-6. **0/1 Knapsack** (`Core_DP/Knapsack/01_Knapsack/`) ⭐⭐⭐
-7. **Subset Sum** (`Core_DP/Knapsack/Subset_Sum/`) ⭐⭐
-8. **Target Sum** (`Core_DP/Knapsack/Target_Sum/`) ⭐⭐
-9. **Coin Change Min** (`Core_DP/Knapsack/Coin_Change/`) ⭐⭐⭐
-10. **Coin Change Count** (`Core_DP/Knapsack/Coin_Change_II/`) ⭐⭐
-11. **LCS** (`Trees_Graphs/String_DP/Longest_Common_Subsequence/`) ⭐⭐⭐
-12. **Edit Distance** (`Trees_Graphs/String_DP/Edit_Distance/`) ⭐⭐⭐
-13. **Kth Largest** (`Trees_Graphs/Heap_K_Way_Merge/Kth_Largest_Element/`) ⭐⭐
-14. **Merge K Lists** (`Trees_Graphs/Heap_K_Way_Merge/Merge_K_Sorted_Lists/`) ⭐⭐⭐
-15. **Top K Frequent** (`Trees_Graphs/Heap_K_Way_Merge/Top_K_Frequent_Elements/`) ⭐⭐
-16. **Topological Sort (Kahn's)** (`Trees_Graphs/Topological_Sort/Basic_Kahns_Algorithm/`) ⭐⭐
-17. **Course Schedule** (`Trees_Graphs/Topological_Sort/Course_Schedule/`) ⭐⭐⭐
-18. **LIS** (`Trees_Graphs/1D_DP/Longest_Increasing_Subsequence/`) ⭐⭐
-19. **Word Break** (`Trees_Graphs/1D_DP/Word_Break/`) ⭐⭐
-20. **Merge Intervals** (`Arrays_Strings/Sorting_Scan/Merge_Intervals/`) ⭐⭐
+2. **Sliding Window - Find All Anagrams** (`Arrays_Strings/Sliding_Window/Anagram_Pattern/`) ⭐⭐
+3. **Graph DFS** (`Trees_Graphs/DFS_Recursion/Graph_DFS_Visited/`) ⭐⭐⭐
+4. **Graph BFS** (`Trees_Graphs/BFS/Graph_BFS/`) ⭐⭐⭐
+5. **Grid BFS** (`Trees_Graphs/BFS/Grid_BFS/`) ⭐⭐⭐
+6. **Multi-Source BFS** (`Trees_Graphs/BFS/Multi_Source/`) ⭐⭐
+7. **0/1 Knapsack** (`Core_DP/Knapsack/01_Knapsack/`) ⭐⭐⭐
+8. **Subset Sum** (`Core_DP/Knapsack/Subset_Sum/`) ⭐⭐
+9. **Target Sum** (`Core_DP/Knapsack/Target_Sum/`) ⭐⭐
+10. **Coin Change Min** (`Core_DP/Knapsack/Coin_Change/`) ⭐⭐⭐
+11. **Coin Change Count** (`Core_DP/Knapsack/Coin_Change_II/`) ⭐⭐
+12. **LCS** (`Core_DP/LCS_Edit_Distance/Longest_Common_Subsequence/`) ⭐⭐⭐
+13. **Edit Distance** (`Core_DP/LCS_Edit_Distance/Edit_Distance/`) ⭐⭐⭐
+14. **Kth Largest** (`Trees_Graphs/Heap_K_Way_Merge/Kth_Largest_Element/`) ⭐⭐
+15. **Merge K Lists** (`Trees_Graphs/Heap_K_Way_Merge/Merge_K_Sorted_Lists/`) ⭐⭐⭐
+16. **Top K Frequent** (`Trees_Graphs/Heap_K_Way_Merge/Top_K_Frequent_Elements/`) ⭐⭐
+17. **Topological Sort (Kahn's)** (`Trees_Graphs/Topological_Sort/Basic_Kahns_Algorithm/`) ⭐⭐
+18. **Course Schedule** (`Trees_Graphs/Topological_Sort/Course_Schedule/`) ⭐⭐⭐
+19. **LIS** (`Trees_Graphs/1D_DP/Longest_Increasing_Subsequence/`) ⭐⭐
+20. **Word Break** (`Trees_Graphs/1D_DP/Word_Break/`) ⭐⭐
+21. **Merge Intervals** (`Arrays_Strings/Sorting_Scan/Merge_Intervals/`) ⭐⭐
+22. **Backtracking** (`Trees_Graphs/DFS_Recursion/Backtracking/`) ⭐⭐⭐
 
 **Time to Master:** 3-4 months (after junior)  
 **LeetCode Target:** 120-150 Medium, 15-25 Hard
@@ -77,9 +85,9 @@
 5. **Magnetic Force** (`Trees_Graphs/Binary_Search_On_Answer/Maximize_Minimum/`) ⭐⭐
 6. **Burst Balloons** (`Trees_Graphs/Interval_DP/Burst_Balloons/`) ⭐⭐⭐
 7. **Matrix Chain** (`Trees_Graphs/Interval_DP/Matrix_Chain_Merge_Stones/`) ⭐⭐
-8. **Regex Matching** (`Trees_Graphs/String_DP/Regular_Expression_Matching/`) ⭐⭐⭐
-9. **Wildcard Matching** (`Trees_Graphs/String_DP/Wildcard_Matching/`) ⭐⭐
-10. **Distinct Subsequences** (`Trees_Graphs/String_DP/Distinct_Subsequences/`) ⭐⭐
+8. **Regex Matching** (`Core_DP/LCS_Edit_Distance/Regex_Matching/`) ⭐⭐⭐
+9. **Wildcard Matching** (`Core_DP/LCS_Edit_Distance/Wildcard_Matching/`) ⭐⭐
+10. **Distinct Subsequences** (`Core_DP/LCS_Edit_Distance/Distinct_Subsequences/`) ⭐⭐
 11. **Smallest Range** (`Trees_Graphs/Heap_K_Way_Merge/Smallest_Range_K_Lists/`) ⭐⭐
 12. **Alien Dictionary** (`Trees_Graphs/Topological_Sort/Alien_Dictionary/`) ⭐⭐⭐
 13. **Bidirectional BFS** (`Trees_Graphs/BFS/Bidirectional_BFS/`) ⭐⭐

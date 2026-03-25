@@ -12,10 +12,33 @@
 import java.util.*;
 
 public class Solution {
-    
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // NAIVE APPROACH (Brute Force) - O(n²) time | O(k) space
+    // ─────────────────────────────────────────────────────────────────────────
+    // INTERVIEW SCRIPT:
+    //   1. Describe:   "Brute force checks every substring and counts distinct chars — O(n²)"
+    //   2. Problem:    "Too slow for large inputs; n=10⁴ means 10⁸ operations"
+    //   3. Transition: "With a sliding window we maintain a frequency map and shrink
+    //                   from the left when distinct chars exceed k — drops to O(n)"
+    //
+    // public static int longestAtMostKDistinctNaive(String s, int k) {
+    //     int best = 0;
+    //     for (int i = 0; i < s.length(); i++) {
+    //         Set<Character> seen = new HashSet<>();
+    //         for (int j = i; j < s.length(); j++) {
+    //             seen.add(s.charAt(j));
+    //             if (seen.size() <= k) best = Math.max(best, j - i + 1);
+    //             else break; // adding more chars won't help this window
+    //         }
+    //     }
+    //     return best;
+    // }
+    // ─────────────────────────────────────────────────────────────────────────
+
     /**
      * Find longest substring with at most K distinct characters.
-     * 
+     *
      * @param s Input string
      * @param k Maximum number of distinct characters allowed
      * @return Length of longest valid substring
