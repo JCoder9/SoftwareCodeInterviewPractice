@@ -11,6 +11,28 @@ Space Complexity: O(min(k, alphabet)) - at most k+1 chars in map before shrinkin
 
 from collections import defaultdict
 
+# ─────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) - O(n²) time | O(k) space
+# ─────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force checks every substring and counts distinct chars — O(n²)"
+#   2. Problem:    "Too slow for large inputs; n=10⁴ means 10⁸ operations"
+#   3. Transition: "With a sliding window we maintain a frequency map and shrink
+#                   from the left when distinct chars exceed k — drops to O(n)"
+#
+# def longest_at_most_k_distinct_naive(s: str, k: int) -> int:
+#     best = 0
+#     for i in range(len(s)):
+#         seen = set() //added here to remove left char when shrinking
+#         for j in range(i, len(s)):
+#             seen.add(s[j])
+#             if len(seen) <= k:
+#                 best = max(best, j - i + 1)
+#             else:
+#                 break  # adding more chars won't help this window
+#     return best
+# ─────────────────────────────────────────────────────────────────────────
+
 def longest_at_most_k_distinct(s: str, k: int) -> int:
     """
     Find longest substring with at most K distinct characters.
@@ -24,7 +46,6 @@ def longest_at_most_k_distinct(s: str, k: int) -> int:
     """
     if not s or k <= 0:
         return 0  # No valid substring
-
     count = defaultdict(int)
     left = 0
     best = 0  # Length can be 0 if empty, so start at 0

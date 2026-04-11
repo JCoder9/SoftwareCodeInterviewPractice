@@ -1,19 +1,45 @@
 """
 BFS - BFS on Graph with Visited Tracking
 
-Related LeetCode Problems:
-- LC 133: Clone Graph (Medium)
-- LC 127: Word Ladder (Hard)
-- LC 847: Shortest Path Visiting All Nodes (Hard)
+Problem: Traverse a graph level-by-level starting from a source node.
+         Find shortest path or explore all reachable nodes.
 
-Pattern:
-- Need to track visited nodes to avoid cycles!
-- Use set to mark visited nodes
-- Common for general graph traversal
+Pattern: Use queue for BFS. Maintain visited set to avoid cycles.
+         Essential for shortest path in unweighted graphs.
+
+Related LeetCode Problems:
+- LC 133: Clone Graph (Medium) ⭐⭐
+- LC 127: Word Ladder (Hard) ⭐⭐⭐
+- LC 841: Keys and Rooms (Medium)
+- LC 847: Shortest Path Visiting All Nodes (Hard)
 
 Time Complexity: O(V + E) - V vertices, E edges
 Space Complexity: O(V) - visited set and queue
 """
+
+# ─────────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) — O(V!) time | O(V) space
+# ─────────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force explores all possible paths using DFS recursively
+#                  — exponential paths without visited tracking"
+#   2. Problem:    "In graphs with cycles: infinite loops! Even with cycle detection,
+#                  explores exponential number of paths"
+#   3. Transition: "BFS with visited set explores each node once, processes level
+#                  by level — O(V + E) linear time"
+#
+# def bfs_naive(graph, start):
+#     # DFS without proper visited tracking - explores many redundant paths
+#     result = []
+#     def dfs(node, path):
+#         if node in path:  # Cycle detection only
+#             return
+#         result.append(node)
+#         for neighbor in graph[node]:
+#             dfs(neighbor, path + [node])
+#     dfs(start, [])
+#     return result
+# ─────────────────────────────────────────────────────────────────────────────
 
 from collections import deque
 

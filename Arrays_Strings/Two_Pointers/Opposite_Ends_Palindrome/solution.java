@@ -11,6 +11,29 @@
  */
 
 public class Solution {
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // NAIVE APPROACH (Brute Force) - O(n) time | O(n) space
+    // ─────────────────────────────────────────────────────────────────────────
+    // INTERVIEW SCRIPT:
+    //   1. Describe:   "Brute force filters all alphanumeric chars to a new string,
+    //                   then compares with its reverse — O(n) time, O(n) space"
+    //   2. Problem:    "Uses extra space for filtered string and its reverse"
+    //   3. Transition: "With two pointers from opposite ends we skip non-alphanumeric
+    //                   in-place and compare — same O(n) time but O(1) space"
+    //
+    // public static boolean isPalindromeNaive(String s) {
+    //     StringBuilder filtered = new StringBuilder();
+    //     for (char c : s.toCharArray()) {
+    //         if (Character.isLetterOrDigit(c)) {
+    //             filtered.append(Character.toLowerCase(c));
+    //         }
+    //     }
+    //     String str = filtered.toString();
+    //     String rev = new StringBuilder(str).reverse().toString();
+    //     return str.equals(rev);
+    // }
+    // ─────────────────────────────────────────────────────────────────────────
     
     /**
      * Check if string is a palindrome (ignoring non-alphanumeric, case-insensitive).

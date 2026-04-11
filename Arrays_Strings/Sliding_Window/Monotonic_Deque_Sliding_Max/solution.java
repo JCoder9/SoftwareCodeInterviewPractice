@@ -14,6 +14,31 @@
 import java.util.*;
 
 public class Solution {
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // NAIVE APPROACH (Brute Force) - O(n × k) time | O(1) space
+    // ─────────────────────────────────────────────────────────────────────────
+    // INTERVIEW SCRIPT:
+    //   1. Describe:   "Brute force finds the max for each window by scanning all k
+    //                   elements — O(n × k) time"
+    //   2. Problem:    "For n=10⁵ and k=10³, we'd do ~10⁸ operations"
+    //   3. Transition: "With a monotonic deque we maintain potential maxes in decreasing
+    //                   order. Front always holds current max — drops to O(n)"
+    //
+    // public static int[] maxSlidingWindowNaive(int[] nums, int k) {
+    //     if (nums.length == 0 || k <= 0 || k > nums.length) return new int[0];
+    //     
+    //     int[] res = new int[nums.length - k + 1];
+    //     for (int i = 0; i <= nums.length - k; i++) {
+    //         int max = Integer.MIN_VALUE;
+    //         for (int j = i; j < i + k; j++) {
+    //             max = Math.max(max, nums[j]);
+    //         }
+    //         res[i] = max;
+    //     }
+    //     return res;
+    // }
+    // ─────────────────────────────────────────────────────────────────────────
     
     /**
      * Find maximum in each sliding window of size k.

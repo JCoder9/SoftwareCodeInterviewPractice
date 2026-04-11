@@ -1,18 +1,49 @@
 """
 BFS - Bidirectional BFS (Meet in the Middle)
 
-Related LeetCode Problems:
-- LC 127: Word Ladder (Hard)
-- LC 752: Open the Lock (Medium)
+Problem: Find shortest path in large search space.
+         Example: Word Ladder, Open the Lock
 
-Pattern:
-- BFS from both start AND end simultaneously, meet in the middle
-- Can be much faster! Search space grows exponentially
-- Two small searches beat one big one
+Pattern: BFS from both start AND end simultaneously, meet in middle
+
+Related LeetCode Problems:
+- LC 127: Word Ladder (Hard) ⭐⭐⭐
+- LC 752: Open the Lock (Medium)
+- LC 433: Minimum Genetic Mutation (Medium)
+
+Key Insight: Search space grows exponentially - O(b^d) becomes O(b^(d/2))
+             Two small searches beat one big one!
 
 Time Complexity: O(b^(d/2)) - much better than O(b^d)
 Space Complexity: O(b^(d/2))
 """
+
+# ─────────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) — O(b^d) time | O(b^d) space
+# ─────────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Standard BFS from start explores all nodes level-by-level —
+#                  O(b^d) where b=branching factor, d=depth"
+#   2. Problem:    "For b=10, d=6: 10^6 = 1M states; for d=8: 100M states"
+#   3. Transition: "BFS from both ends meets in middle — O(b^(d/2)); for d=6:
+#                  2×10^3 = 2K states vs 1M"
+#
+# def bfs_naive(graph, start, end):
+#     from collections import deque
+#     queue = deque([(start, 0)])
+#     visited = {start}
+#     
+#     while queue:
+#         node, dist = queue.popleft()
+#         if node == end:
+#             return dist
+#         
+#         for neighbor in graph[node]:
+#             if neighbor not in visited:
+#                 visited.add(neighbor)
+#                 queue.append((neighbor, dist + 1))
+#     return -1
+# ─────────────────────────────────────────────────────────────────────────────
 
 from collections import deque
 

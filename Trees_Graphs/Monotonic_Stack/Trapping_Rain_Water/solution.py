@@ -1,7 +1,46 @@
-"""Monotonic Stack - Trapping Rain Water (LC 42)
-Calculate trapped rain water given elevation map.
-Water level = min(max_left, max_right) - height[i]
-Time: O(n), Space: O(n)"""
+"""
+Monotonic Stack - Trapping Rain Water (LC 42)
+
+Problem: Calculate trapped rain water given elevation map.
+         Example: height = [0,1,0,2,1,0,1,3,2,1,2,1] → 6 units
+
+Pattern: Water level = min(max_left, max_right) - height[i]
+
+Related LeetCode Problems:
+- LC 42: Trapping Rain Water (Hard) ⭐⭐⭐
+- LC 407: Trapping Rain Water II (Hard)
+- LC 1944: Number of Visible People in a Queue (Hard)
+
+Time Complexity: O(n) - single/double pass
+Space Complexity: O(n) - arrays for left/right max or stack
+"""
+
+# ─────────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) — O(n²) time | O(1) space
+# ─────────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force scans left and right from each position to find max
+#                  heights — O(n²)"
+#   2. Problem:    "For n=10,000: 100M comparisons to find left/right max for each
+#                  position"
+#   3. Transition: "Pre-compute left_max and right_max arrays in two passes — O(n)"
+#
+# def trap_rain_water_naive(height):
+#     water = 0
+#     n = len(height)
+#     for i in range(n):
+#         # Find max height to the left
+#         left_max = 0
+#         for j in range(0, i + 1):
+#             left_max = max(left_max, height[j])
+#         # Find max height to the right
+#         right_max = 0
+#         for j in range(i, n):
+#             right_max = max(right_max, height[j])
+#         # Water at position i
+#         water += min(left_max, right_max) - height[i]
+#     return water
+# ─────────────────────────────────────────────────────────────────────────────
 
 def trap_rain_water(height):
     if not height:

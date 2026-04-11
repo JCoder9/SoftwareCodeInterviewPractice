@@ -14,6 +14,49 @@
 import java.util.*;
 
 public class Solution {
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // NAIVE APPROACH (Brute Force) - O(n² × m) time | O(m) space
+    // ─────────────────────────────────────────────────────────────────────────
+    // INTERVIEW SCRIPT:
+    //   1. Describe:   "Brute force checks every substring and validates if it contains
+    //                   all chars from t — O(n²) substrings × O(m) to validate each"
+    //   2. Problem:    "For large inputs (|s|=10⁴, |t|=100), this means ~10¹⁰ operations"
+    //   3. Transition: "With a sliding window we expand until valid, then shrink to
+    //                   minimize. Each char visited at most twice — drops to O(n + m)"
+    //
+    // public static String minWindowNaive(String s, String t) {
+    //     if (t.length() > s.length()) return "";
+    //     
+    //     Map<Character, Integer> need = new HashMap<>();
+    //     for (char c : t.toCharArray()) need.put(c, need.getOrDefault(c, 0) + 1);
+    //     
+    //     String best = "";
+    //     int bestLen = Integer.MAX_VALUE;
+    //     
+    //     for (int i = 0; i < s.length(); i++) {
+    //         for (int j = i; j < s.length(); j++) {
+    //             Map<Character, Integer> win = new HashMap<>();
+    //             for (int k = i; k <= j; k++) {
+    //                 char c = s.charAt(k);
+    //                 win.put(c, win.getOrDefault(c, 0) + 1);
+    //             }
+    //             boolean valid = true;
+    //             for (char c : need.keySet()) {
+    //                 if (win.getOrDefault(c, 0) < need.get(c)) {
+    //                     valid = false;
+    //                     break;
+    //                 }
+    //             }
+    //             if (valid && j - i + 1 < bestLen) {
+    //                 bestLen = j - i + 1;
+    //                 best = s.substring(i, j + 1);
+    //             }
+    //         }
+    //     }
+    //     return best;
+    // }
+    // ─────────────────────────────────────────────────────────────────────────
     
     /**
      * Find minimum window substring of s containing all characters of t.

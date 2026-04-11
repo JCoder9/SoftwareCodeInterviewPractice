@@ -12,6 +12,25 @@ Space Complexity: O(n) for prefix array
 
 from typing import List
 
+# ─────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) - O(q × n) time | O(1) space
+#   where q = number of queries, n = array length
+# ─────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force loops through the range for each query to calculate
+#                   the sum — O(n) per query, O(q × n) for q queries"
+#   2. Problem:    "For 10⁴ queries on array of 10⁴ elements, we'd do ~10⁸ operations"
+#   3. Transition: "With prefix sums we precompute cumulative sums once in O(n),
+#                   then answer each query in O(1) — total O(n + q)"
+#
+# class PrefixSumNaive:
+#     def __init__(self, nums):
+#         self.nums = nums
+#     
+#     def range_sum(self, left, right):
+#         return sum(self.nums[left:right + 1])
+# ─────────────────────────────────────────────────────────────────────────
+
 class PrefixSum:
     """Build prefix sum array for efficient range queries."""
     
@@ -32,7 +51,3 @@ if __name__ == "__main__":
     ps = PrefixSum(nums)
     print(ps.range_sum(1, 3))  # Sum of [1,4,2] = 7
     print(ps.range_sum(0, 4))  # Sum of entire array = 15
-    for nums, k, expected in test_cases:
-        result = subarray_sum_equals_k(nums, k)
-        status = "✓" if result == expected else "✗"
-        print(f"{status} subarray_sum_equals_k({nums}, k={k}) = {result}")

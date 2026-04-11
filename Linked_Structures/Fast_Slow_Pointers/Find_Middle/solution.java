@@ -1,13 +1,47 @@
 /**
  * Fast/Slow Pointers - Find Middle Pattern
  * 
+ * Problem: Find the middle node of a linked list. For even length, return the second middle node.
+ * 
+ * Pattern: Fast pointer moves 2 steps, slow moves 1 step. When fast reaches end, slow is at middle.
+ * 
  * Related LeetCode Problems:
  * - LC 876: Middle of the Linked List (Easy)
  * - LC 2095: Delete the Middle Node of a Linked List (Medium)
  * - LC 143: Reorder List (Medium)
  * 
- * Time: O(n), Space: O(1)
+ * Time Complexity: O(n) - single pass through list
+ * Space Complexity: O(1) - only two pointers
  */
+
+// ─────────────────────────────────────────────────────────────────────────
+// NAIVE APPROACH (Brute Force) - O(n) time | O(1) space
+// ─────────────────────────────────────────────────────────────────────────
+// INTERVIEW SCRIPT:
+//   1. Describe:   "Brute force counts the length first, then traverses to length/2
+//                   — O(n) time but requires two passes"
+//   2. Problem:    "Two passes through the list; can we do it in one pass?"
+//   3. Transition: "With fast/slow pointers, fast moves 2x speed. When fast reaches
+//                   end, slow is at middle — same O(n) but single pass, more elegant"
+//
+// public ListNode middleNodeNaive(ListNode head) {
+//     // First pass: count length
+//     int length = 0;
+//     ListNode curr = head;
+//     while (curr != null) {
+//         length++;
+//         curr = curr.next;
+//     }
+//     
+//     // Second pass: go to middle
+//     int mid = length / 2;
+//     curr = head;
+//     for (int i = 0; i < mid; i++) {
+//         curr = curr.next;
+//     }
+//     return curr;
+// }
+// ─────────────────────────────────────────────────────────────────────────
 
 class ListNode {
     int val;

@@ -12,6 +12,23 @@ Space Complexity: O(1) - in-place modification
 
 from typing import List
 
+# ─────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) - O(n) time | O(n) space
+# ─────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force creates a new list, appends non-zeros first,
+#                   then fills rest with zeros — O(n) time, O(n) space"
+#   2. Problem:    "Uses extra space; can't do it in-place"
+#   3. Transition: "With two pointers (slow for write position, fast for scanning)
+#                   we write non-zeros in-place — same O(n) time but O(1) space"
+#
+# def move_zeroes_naive(nums: List[int]) -> None:
+#     temp = [x for x in nums if x != 0]  # Non-zeros
+#     temp.extend([0] * (len(nums) - len(temp)))  # Add zeros
+#     for i in range(len(nums)):
+#         nums[i] = temp[i]
+# ─────────────────────────────────────────────────────────────────────────
+
 def move_zeroes(nums: List[int]) -> None:
     """
     Move all zeros to end of array, maintaining order of non-zeros.

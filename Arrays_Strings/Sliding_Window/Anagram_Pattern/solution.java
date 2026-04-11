@@ -13,6 +13,34 @@
 import java.util.*;
 
 public class Solution {
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // NAIVE APPROACH (Brute Force) - O(n × m × 26) time | O(1) space
+    // ─────────────────────────────────────────────────────────────────────────
+    // INTERVIEW SCRIPT:
+    //   1. Describe:   "Brute force checks every substring of length m and compares
+    //                   frequency arrays — O(n × m × 26) ≈ O(n × m)"
+    //   2. Problem:    "For large inputs (n=10⁴, m=1000), this means ~10⁷ operations"
+    //   3. Transition: "With a sliding window we maintain one frequency array and
+    //                   update it incrementally as we slide — drops to O(n)"
+    //
+    // public static List<Integer> findAnagramsNaive(String s, String p) {
+    //     List<Integer> res = new ArrayList<>();
+    //     if (s.length() < p.length()) return res;
+    //     
+    //     int[] need = new int[26];
+    //     for (char c : p.toCharArray()) need[c - 'a']++;
+    //     
+    //     for (int i = 0; i <= s.length() - p.length(); i++) {
+    //         int[] win = new int[26];
+    //         for (int j = i; j < i + p.length(); j++) {
+    //             win[s.charAt(j) - 'a']++;
+    //         }
+    //         if (Arrays.equals(win, need)) res.add(i);
+    //     }
+    //     return res;
+    // }
+    // ─────────────────────────────────────────────────────────────────────────
     
     /**
      * Find all starting indices of p's anagrams in s.

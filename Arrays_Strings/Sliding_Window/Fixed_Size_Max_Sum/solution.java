@@ -12,6 +12,31 @@
 import java.util.Arrays;
 
 public class Solution {
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // NAIVE APPROACH (Brute Force) - O(n × k) time | O(1) space
+    // ─────────────────────────────────────────────────────────────────────────
+    // INTERVIEW SCRIPT:
+    //   1. Describe:   "Brute force recalculates the sum for each window of size k
+    //                   from scratch — O(n × k) time"
+    //   2. Problem:    "For n=10⁵ and k=10³, we'd do ~10⁸ operations"
+    //   3. Transition: "With a sliding window we maintain the sum incrementally:
+    //                   add new element, subtract old — drops to O(n)"
+    //
+    // public static Integer maxSumKNaive(int[] nums, int k) {
+    //     if (nums.length < k || k <= 0) return null;
+    //     
+    //     int best = Integer.MIN_VALUE;
+    //     for (int i = 0; i <= nums.length - k; i++) {
+    //         int sum = 0;
+    //         for (int j = i; j < i + k; j++) {
+    //             sum += nums[j];
+    //         }
+    //         best = Math.max(best, sum);
+    //     }
+    //     return best;
+    // }
+    // ─────────────────────────────────────────────────────────────────────────
     
     /**
      * Find maximum sum of any subarray of length k.
@@ -33,6 +58,7 @@ public class Solution {
             windowSum += nums[right];
 
             // Shrink window if it exceeds size k
+            //can only exceed by 1 element so use if instead of while
             if (right - left + 1 > k) {
                 windowSum -= nums[left];
                 left++;

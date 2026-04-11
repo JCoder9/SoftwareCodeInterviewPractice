@@ -1,11 +1,32 @@
 """
-Two Sum - Classic Seen-Set Pattern
+Two Sum - Classic Complement Search Pattern
 
-Pattern: Use hash map to find complement (target - current).
+Problem: Given an array of integers and a target, find two numbers that add up to the target.
+         Return the indices of the two numbers.
+
+Pattern: Use hash map to store seen values and check for complement (target - current).
 
 Time Complexity: O(n) - single pass
 Space Complexity: O(n) - storing values in map
 """
+
+# ─────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) - O(n²) time | O(1) space
+# ─────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force checks every pair of numbers to see if they
+#                   sum to target — O(n²) time with nested loops"
+#   2. Problem:    "For n=10⁴, we'd do ~10⁸ comparisons; too slow"
+#   3. Transition: "With a hash map we track seen values and check for the
+#                   complement in O(1) — drops to O(n) time"
+#
+# def two_sum_naive(nums, target):
+#     for i in range(len(nums)):
+#         for j in range(i + 1, len(nums)):
+#             if nums[i] + nums[j] == target:
+#                 return [i, j]
+#     return []  # No solution found
+# ─────────────────────────────────────────────────────────────────────────
 
 def two_sum(nums, target):
     """

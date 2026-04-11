@@ -1,13 +1,32 @@
 """
 Valid Anagram - Basic Frequency Check
 
-Pattern: Check if two strings are anagrams (same characters, different order).
+Problem: Given two strings s and t, return True if t is an anagram of s, False otherwise.
+         An anagram uses the same characters in a different order.
 
-Time Complexity: O(n)
-Space Complexity: O(1) - at most 26 characters
+Pattern: Build frequency count for both strings and compare.
+
+Time Complexity: O(n) - single pass through both strings
+Space Complexity: O(1) - at most 26 characters for lowercase letters
 """
 
 from collections import Counter
+
+# ─────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) - O(n log n) time | O(n) space
+# ─────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force sorts both strings and compares if they're equal
+#                   — O(n log n) time for sorting"
+#   2. Problem:    "Sorting is slower than needed; uses O(n) space for sorted copies"
+#   3. Transition: "With frequency counting we track character counts and compare
+#                   in one pass — drops to O(n) time with O(1) space"
+#
+# def is_anagram_naive(s: str, t: str) -> bool:
+#     if len(s) != len(t):
+#         return False
+#     return sorted(s) == sorted(t)
+# ─────────────────────────────────────────────────────────────────────────
 
 
 def is_anagram(s: str, t: str) -> bool:
@@ -16,26 +35,19 @@ def is_anagram(s: str, t: str) -> bool:
     if len(s) != len(t):
         return False
     
-    # Count characters in both strings
-    count = {}
+    # Count array for 26 lowercase letters (same as Java approach)
+    count = [0] * 26
     
-    # Add counts from first string
-    for char in s:
-        count[char] = count.get(char, 0) + 1
-    
-    # Subtract counts from second string
-    for char in t:
-        count[char] = count.get(char, 0) - 1
+    # Single pass: increment for s, decrement for t
+    for c1, c2 in zip(s, t):
+        count[ord(c1) - ord('a')] += 1
+        count[ord(c2) - ord('a')] -= 1
     
     # If anagrams, all counts should be 0
-    for val in count.values():
-        if val != 0:
-            return False
-    
-    return True
+    return all(c == 0 for c in count)
 
 
-# Alternative: using Counter (cleaner)
+# Alternative: using Counter (more Pythonic, but slightly less efficient)
 def is_anagram_v2(s: str, t: str) -> bool:
     return Counter(s) == Counter(t)
 

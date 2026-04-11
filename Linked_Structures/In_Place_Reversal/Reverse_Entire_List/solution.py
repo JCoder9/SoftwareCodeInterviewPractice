@@ -1,11 +1,42 @@
 """
-Basic Reverse Entire Linked List
+In-Place Reversal - Reverse Entire List Pattern
 
-Pattern: Use 3 pointers: prev (starts null), current (starts at head), next (temporary storage)
+Problem: Reverse a singly linked list in-place.
 
-Time Complexity: O(n)
-Space Complexity: O(1)
+Pattern: Use 3 pointers: prev (starts None), current (starts at head), next (temporary).
+         Reverse links one by one.
+
+Time Complexity: O(n) - single pass
+Space Complexity: O(1) - only three pointers
 """
+
+# ─────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) - O(n) time | O(n) space
+# ─────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force stores all nodes in a list, then rebuilds in
+#                   reverse order — O(n) time but O(n) space"
+#   2. Problem:    "Uses extra space; not truly in-place"
+#   3. Transition: "With 3 pointers we reverse links in-place as we traverse
+#                   — same O(n) time but O(1) space"
+#
+# def reverse_list_naive(head):
+#     nodes = []
+#     curr = head
+#     
+#     # Store all nodes
+#     while curr:
+#         nodes.append(curr)
+#         curr = curr.next
+#     
+#     # Rebuild in reverse
+#     for i in range(len(nodes) - 1, 0, -1):
+#         nodes[i].next = nodes[i - 1]
+#     if nodes:
+#         nodes[0].next = None
+#         return nodes[-1]
+#     return None
+# ─────────────────────────────────────────────────────────────────────────
 
 class ListNode:
     def __init__(self, val=0, next=None):

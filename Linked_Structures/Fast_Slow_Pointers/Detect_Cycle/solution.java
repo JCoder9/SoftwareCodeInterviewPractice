@@ -1,19 +1,44 @@
 /**
  * Fast/Slow Pointers - Detect Cycle Pattern
  * 
+ * Problem: Given a linked list, determine if it has a cycle in it.
+ * 
+ * Pattern: Fast pointer moves 2 steps, slow moves 1. If they meet, cycle exists.
+ *          If fast reaches null, no cycle.
+ * 
  * Related LeetCode Problems:
  * - LC 141: Linked List Cycle (Easy)
  * - LC 287: Find the Duplicate Number (Medium)
  * - LC 457: Circular Array Loop (Medium)
  * 
- * Pattern:
- * - Slow pointer moves 1 step, fast moves 2 steps
- * - If they meet → cycle exists
- * - If fast reaches null → no cycle
- * 
- * Time Complexity: O(n)
- * Space Complexity: O(1)
+ * Time Complexity: O(n) - visit each node at most twice
+ * Space Complexity: O(1) - only two pointers
  */
+
+// ─────────────────────────────────────────────────────────────────────────
+// NAIVE APPROACH (Brute Force) - O(n) time | O(n) space
+// ─────────────────────────────────────────────────────────────────────────
+// INTERVIEW SCRIPT:
+//   1. Describe:   "Brute force uses a hash set to track visited nodes
+//                   — O(n) time but O(n) space for the set"
+//   2. Problem:    "Uses extra space; can we do it with O(1) space?"
+//   3. Transition: "With fast/slow pointers, if there's a cycle they'll eventually
+//                   meet — same O(n) time but O(1) space"
+//
+// public boolean hasCycleNaive(ListNode head) {
+//     Set<ListNode> visited = new HashSet<>();
+//     ListNode curr = head;
+//     
+//     while (curr != null) {
+//         if (visited.contains(curr)) {
+//             return true;  // Cycle detected
+//         }
+//         visited.add(curr);
+//         curr = curr.next;
+//     }
+//     return false;  // Reached end, no cycle
+// }
+// ─────────────────────────────────────────────────────────────────────────
 
 class ListNode {
     int val;

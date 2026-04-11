@@ -13,6 +13,30 @@
 import java.util.Arrays;
 
 public class Solution {
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // NAIVE APPROACH (Brute Force) - O(n) time | O(n) space
+    // ─────────────────────────────────────────────────────────────────────────
+    // INTERVIEW SCRIPT:
+    //   1. Describe:   "Brute force creates a new array, copies non-zeros first,
+    //                   then fills rest with zeros — O(n) time, O(n) space"
+    //   2. Problem:    "Uses extra space; can't do it in-place"
+    //   3. Transition: "With two pointers (slow for write position, fast for scanning)
+    //                   we write non-zeros in-place — same O(n) time but O(1) space"
+    //
+    // public static void moveZeroesNaive(int[] nums) {
+    //     int[] temp = new int[nums.length];
+    //     int idx = 0;
+    //     // Copy non-zeros
+    //     for (int num : nums) {
+    //         if (num != 0) temp[idx++] = num;
+    //     }
+    //     // Rest are already zeros (array initialized to 0)
+    //     for (int i = 0; i < nums.length; i++) {
+    //         nums[i] = temp[i];
+    //     }
+    // }
+    // ─────────────────────────────────────────────────────────────────────────
     
     /**
      * Move all zeros to end of array, maintaining order of non-zeros.

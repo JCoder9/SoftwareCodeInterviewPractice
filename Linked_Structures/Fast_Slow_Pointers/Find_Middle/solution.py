@@ -1,11 +1,39 @@
 """
-Find the Middle of Linked List
+Fast/Slow Pointers - Find Middle Pattern
 
-Pattern: When fast reaches the end, slow is at the middle
+Problem: Find the middle node of a linked list. For even length, return the second middle node.
 
-Time Complexity: O(n)
-Space Complexity: O(1)
+Pattern: Fast pointer moves 2 steps, slow moves 1 step. When fast reaches end, slow is at middle.
+
+Time Complexity: O(n) - single pass through list
+Space Complexity: O(1) - only two pointers
 """
+
+# ─────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) - O(n) time | O(1) space
+# ─────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force counts the length first, then traverses to length/2
+#                   — O(n) time but requires two passes"
+#   2. Problem:    "Two passes through the list; can we do it in one pass?"
+#   3. Transition: "With fast/slow pointers, fast moves 2x speed. When fast reaches
+#                   end, slow is at middle — same O(n) but single pass, more elegant"
+#
+# def middleNode_naive(head):
+#     # First pass: count length
+#     length = 0
+#     curr = head
+#     while curr:
+#         length += 1
+#         curr = curr.next
+#     
+#     # Second pass: go to middle
+#     mid = length // 2
+#     curr = head
+#     for _ in range(mid):
+#         curr = curr.next
+#     return curr
+# ─────────────────────────────────────────────────────────────────────────
 
 class ListNode:
     def __init__(self, val=0, next=None):

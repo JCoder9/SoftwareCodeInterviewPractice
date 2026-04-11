@@ -13,6 +13,29 @@ Space Complexity: O(k) - frequency map with at most k distinct elements
 from collections import defaultdict
 from typing import List
 
+# ─────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) - O(n²) time | O(k) space
+# ─────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force checks every subarray and counts distinct elements
+#                   — O(n²) time with O(k) space for the set"
+#   2. Problem:    "For n=10⁴, we'd do ~10⁸ operations; needs optimization"
+#   3. Transition: "Key insight: exactlyK = atMostK - atMost(K-1). We use two
+#                   sliding windows to count in O(n) time instead"
+#
+# def exactly_k_distinct_naive(nums: List[int], k: int) -> int:
+#     count = 0
+#     for i in range(len(nums)):
+#         distinct = set()
+#         for j in range(i, len(nums)):
+#             distinct.add(nums[j])
+#             if len(distinct) == k:
+#                 count += 1
+#             elif len(distinct) > k:
+#                 break
+#     return count
+# ─────────────────────────────────────────────────────────────────────────
+
 def subarrays_with_at_most_k_distinct(nums: List[int], k: int) -> int:
     """
     Count subarrays with at most K distinct integers.

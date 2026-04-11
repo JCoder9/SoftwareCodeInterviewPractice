@@ -1,11 +1,48 @@
 """
-Regular Expression Matching
+Regular Expression Matching (LC 10)
 
-Pattern: Match with . (any char) and * (zero+ of previous char)
+Problem: Match pattern with '.' (any char) and '*' (zero+ of previous char).
+         Example: s = "aa", p = "a*" → True
 
-Time Complexity: O(m × n)
-Space Complexity: O(m × n)
+Pattern: 2D DP where dp[i][j] = s[:i] matches p[:j]
+
+Related LeetCode Problems:
+- LC 10: Regular Expression Matching (Hard) ⭐⭐⭐
+- LC 44: Wildcard Matching (Hard)
+- LC 115: Distinct Subsequences (Hard)
+
+Time Complexity: O(m × n) - fill DP table
+Space Complexity: O(m × n) - DP table
 """
+
+# ─────────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) — O(2^(m+n)) time | O(m+n) space
+# ─────────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force recursively tries both branches for '*' (use zero
+#                  times vs one+ times) — O(2^n) branches"
+#   2. Problem:    "For pattern 'a*b*c*...' with 10 stars: 2^10 = 1024+ recursive
+#                  calls per position"
+#   3. Transition: "Use 2D DP to cache (s_idx, p_idx) results — O(m×n)"
+#
+# def is_match_naive(s, p):
+#     def helper(i, j):
+#         # Base cases
+#         if j == len(p):
+#             return i == len(s)
+#         
+#         first_match = i < len(s) and (p[j] == s[i] or p[j] == '.')
+#         
+#         # Handle '*'
+#         if j + 1 < len(p) and p[j + 1] == '*':
+#             # Use * zero times OR use * one+ times
+#             return (helper(i, j + 2) or
+#                     (first_match and helper(i + 1, j)))
+#         else:
+#             return first_match and helper(i + 1, j + 1)
+#     
+#     return helper(0, 0)
+# ─────────────────────────────────────────────────────────────────────────────
 
 def is_match_regex(s, p):
     m, n = len(s), len(p)

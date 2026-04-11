@@ -13,6 +13,34 @@ Space Complexity: O(|s| + |t|) - space for both frequency maps
 
 from collections import Counter, defaultdict
 
+# ─────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) - O(n² × m) time | O(m) space
+# ─────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force checks every substring and validates if it contains
+#                   all chars from t — O(n²) substrings × O(m) to validate each"
+#   2. Problem:    "For large inputs (|s|=10⁴, |t|=100), this means ~10¹⁰ operations"
+#   3. Transition: "With a sliding window we expand until valid, then shrink to
+#                   minimize. Each char visited at most twice — drops to O(n + m)"
+#
+# def min_window_naive(s: str, t: str) -> str:
+#     if len(t) > len(s):
+#         return ""
+#     
+#     need = Counter(t)
+#     best = ""
+#     best_len = float('inf')
+#     
+#     for i in range(len(s)):
+#         for j in range(i, len(s)):
+#             window = Counter(s[i:j+1])
+#             valid = all(window[c] >= need[c] for c in need)
+#             if valid and j - i + 1 < best_len:
+#                 best_len = j - i + 1
+#                 best = s[i:j+1]
+#     return best
+# ─────────────────────────────────────────────────────────────────────────
+
 def min_window(s: str, t: str) -> str:
     """
     Find minimum window substring of s containing all characters of t.

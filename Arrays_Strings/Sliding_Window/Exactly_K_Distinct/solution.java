@@ -13,6 +13,30 @@
 import java.util.*;
 
 public class Solution {
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // NAIVE APPROACH (Brute Force) - O(n²) time | O(k) space
+    // ─────────────────────────────────────────────────────────────────────────
+    // INTERVIEW SCRIPT:
+    //   1. Describe:   "Brute force checks every subarray and counts distinct elements
+    //                   — O(n²) time with O(k) space for the set"
+    //   2. Problem:    "For n=10⁴, we'd do ~10⁸ operations; needs optimization"
+    //   3. Transition: "Key insight: exactlyK = atMostK - atMost(K-1). We use two
+    //                   sliding windows to count in O(n) time instead"
+    //
+    // public static int exactlyKDistinctNaive(int[] nums, int k) {
+    //     int count = 0;
+    //     for (int i = 0; i < nums.length; i++) {
+    //         Set<Integer> distinct = new HashSet<>();
+    //         for (int j = i; j < nums.length; j++) {
+    //             distinct.add(nums[j]);
+    //             if (distinct.size() == k) count++;
+    //             else if (distinct.size() > k) break;
+    //         }
+    //     }
+    //     return count;
+    // }
+    // ─────────────────────────────────────────────────────────────────────────
     
     /**
      * Count subarrays with exactly K distinct integers.

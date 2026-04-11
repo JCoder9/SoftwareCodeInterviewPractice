@@ -1,11 +1,55 @@
 """
-Alien Dictionary
+Alien Dictionary (LC 269)
 
-Pattern: Given sorted alien words, find the order of alien alphabet characters
+Problem: Given sorted alien words, find order of alien alphabet characters.
+         Example: ["wrt","wrf","er","ett","rftt"] → "wertf"
+
+Pattern: Compare adjacent words to build graph, then topological sort
+
+Related LeetCode Problems:
+- LC 269: Alien Dictionary (Hard) ⭐⭐⭐
+- LC 953: Verifying an Alien Dictionary (Easy)
+- LC 210: Course Schedule II (Medium)
 
 Time Complexity: O(C) where C = total characters in all words
 Space Complexity: O(1) or O(26) for English alphabet
 """
+
+# ─────────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) — O(k! × n × L) time | O(k) space
+# ─────────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force tries all k! permutations of unique characters,
+#                  validates each against word pairs — O(k! × n × L)"
+#   2. Problem:    "For k=10 unique chars: 10! = 3.6M permutations to check"
+#   3. Transition: "Build directed graph from adjacent word pairs, topological
+#                  sort — O(C) total characters"
+#
+# def alien_order_naive(words):
+#     from itertools import permutations
+#     # Get all unique characters
+#     chars = set(c for word in words for c in word)
+#     
+#     # Try all permutations of characters
+#     for perm in permutations(chars):
+#         order_map = {char: i for i, char in enumerate(perm)}
+#         valid = True
+#         # Check if this ordering validates all adjacent word pairs
+#         for i in range(len(words) - 1):
+#             word1, word2 = words[i], words[i+1]
+#             # Compare words character by character
+#             for j in range(min(len(word1), len(word2))):
+#                 if order_map[word1[j]] < order_map[word2[j]]:
+#                     break
+#                 elif order_map[word1[j]] > order_map[word2[j]]:
+#                     valid = False
+#                     break
+#             if not valid:
+#                 break
+#         if valid:
+#             return ''.join(perm)
+#     return ""
+# ─────────────────────────────────────────────────────────────────────────────
 
 from collections import defaultdict, deque
 

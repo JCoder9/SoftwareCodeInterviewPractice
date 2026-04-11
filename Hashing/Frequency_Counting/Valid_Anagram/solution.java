@@ -1,13 +1,40 @@
 /**
  * Valid Anagram - Basic Frequency Check
  * 
- * Time Complexity: O(n)
- * Space Complexity: O(1)
+ * Problem: Given two strings s and t, return true if t is an anagram of s, false otherwise.
+ *          An anagram uses the same characters in a different order.
+ * 
+ * Pattern: Build frequency count for both strings and compare.
+ * 
+ * Time Complexity: O(n) - single pass through both strings
+ * Space Complexity: O(1) - fixed array of 26 for lowercase letters
  */
 
 import java.util.*;
 
 public class Solution {
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // NAIVE APPROACH (Brute Force) - O(n log n) time | O(n) space
+    // ─────────────────────────────────────────────────────────────────────────
+    // INTERVIEW SCRIPT:
+    //   1. Describe:   "Brute force sorts both strings and compares if they're equal
+    //                   — O(n log n) time for sorting"
+    //   2. Problem:    "Sorting is slower than needed; uses O(n) space for sorted copies"
+    //   3. Transition: "With frequency counting we track character counts and compare
+    //                   in one pass — drops to O(n) time with O(1) space"
+    //
+    // public static boolean isAnagramNaive(String s, String t) {
+    //     if (s.length() != t.length()) return false;
+    //     
+    //     char[] sArr = s.toCharArray();
+    //     char[] tArr = t.toCharArray();
+    //     Arrays.sort(sArr);
+    //     Arrays.sort(tArr);
+    //     
+    //     return Arrays.equals(sArr, tArr);
+    // }
+    // ─────────────────────────────────────────────────────────────────────────
     
     public static boolean isAnagram(String s, String t) {
         if (s.length() != t.length()) return false;

@@ -1,11 +1,45 @@
 """
-Wildcard Matching
+Wildcard Matching (LC 44)
 
-Pattern: Match string with pattern containing ? (any char) and * (any sequence)
+Problem: Match string with pattern containing ? (any char) and * (any sequence).
+         Example: s = "adceb", p = "*a*b" → True
 
-Time Complexity: O(m × n)
-Space Complexity: O(m × n)
+Pattern: 2D DP where dp[i][j] = s[:i] matches p[:j]
+
+Related LeetCode Problems:
+- LC 44: Wildcard Matching (Hard) ⭐⭐⭐
+- LC 10: Regular Expression Matching (Hard)
+- LC 1023: Camelcase Matching (Medium)
+
+Time Complexity: O(m × n) - fill DP table
+Space Complexity: O(m × n) - DP table
 """
+
+# ─────────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) — O(2^n) time | O(m+n) space
+# ─────────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force recursively tries both branches for '*' (use for zero
+#                  chars vs match one+ chars) — O(2^n) branches"
+#   2. Problem:    "For pattern with 10 stars: 2^10 = 1024+ recursive calls per position"
+#   3. Transition: "Use 2D DP to cache (s_idx, p_idx) results — O(m×n)"
+#
+# def is_match_naive(s, p):
+#     def helper(i, j):
+#         if j == len(p):
+#             return i == len(s)
+#         if i == len(s):
+#             return all(c == '*' for c in p[j:])
+#         
+#         if p[j] == '*':
+#             # Use * for zero chars OR match one char and continue with *
+#             return helper(i, j + 1) or helper(i + 1, j)
+#         elif p[j] == '?' or s[i] == p[j]:
+#             return helper(i + 1, j + 1)
+#         else:
+#             return False
+#     return helper(0, 0)
+# ─────────────────────────────────────────────────────────────────────────────
 
 def is_match(s, p):
     m, n = len(s), len(p)

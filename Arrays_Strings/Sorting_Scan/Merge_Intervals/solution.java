@@ -1,14 +1,60 @@
 /**
  * Merge Intervals - Sort + Scan Pattern
  * 
- * Problem: Given a collection of intervals, merge all overlapping intervals.
+ * Problem: Given collection of intervals, merge all overlapping intervals.
+ *          Example: [[1,3],[2,6],[8,10],[15,18]] → [[1,6],[8,10],[15,18]]
  * 
  * Pattern: 1. Sort intervals by start time
  *          2. Scan through, merging overlapping intervals
  * 
- * Time Complexity: O(n log n) for sorting + O(n) for merging
- * Space Complexity: O(n) for result
+ * Related LeetCode Problems:
+ * - LC 56: Merge Intervals (Medium) ⭐⭐⭐
+ * - LC 57: Insert Interval (Medium)
+ * - LC 252: Meeting Rooms (Easy)
+ * - LC 253: Meeting Rooms II (Medium)
+ * 
+ * Time Complexity: O(n log n) - dominated by sorting
+ * Space Complexity: O(n) - result array
  */
+
+// ─────────────────────────────────────────────────────────────────────────────
+// NAIVE APPROACH (Brute Force) — O(n³) time | O(n) space
+// ─────────────────────────────────────────────────────────────────────────────
+// INTERVIEW SCRIPT:
+//   1. Describe:   "Brute force compares every pair, merges if overlap, repeats
+//                  until no more merges — O(n³) worst case"
+//   2. Problem:    "For 100 intervals: up to 1 million comparisons; repeated scans
+//                  after each merge"
+//   3. Transition: "Sort first, then single left-to-right scan — O(n log n)"
+//
+// public int[][] mergeIntervalsNaive(int[][] intervals) {
+//     List<int[]> result = new ArrayList<>();
+//     for (int[] interval : intervals) {
+//         result.add(new int[]{interval[0], interval[1]});
+//     }
+//     
+//     boolean merged = true;
+//     while (merged) {
+//         merged = false;
+//         for (int i = 0; i < result.size(); i++) {
+//             for (int j = i + 1; j < result.size(); j++) {
+//                 int[] a = result.get(i), b = result.get(j);
+//                 // Check if they overlap
+//                 if (!(a[1] < b[0] || b[1] < a[0])) {
+//                     // Merge
+//                     result.set(i, new int[]{Math.min(a[0], b[0]),
+//                                             Math.max(a[1], b[1])});
+//                     result.remove(j);
+//                     merged = true;
+//                     break;
+//                 }
+//             }
+//             if (merged) break;
+//         }
+//     }
+//     return result.toArray(new int[result.size()][]);
+// }
+// ─────────────────────────────────────────────────────────────────────────────
 
 import java.util.*;
 

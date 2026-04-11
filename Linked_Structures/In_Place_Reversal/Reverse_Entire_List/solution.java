@@ -1,12 +1,50 @@
 /**
  * In-Place Reversal - Reverse Entire List Pattern
  * 
+ * Problem: Reverse a singly linked list in-place.
+ * 
+ * Pattern: Use 3 pointers: prev (starts null), current (starts at head), next (temporary).
+ *          Reverse links one by one.
+ * 
  * Related LeetCode Problems:
  * - LC 206: Reverse Linked List (Easy)
  * - LC 92, 25: Use this as building block
  * 
- * Time: O(n), Space: O(1) iterative, O(n) recursive
+ * Time Complexity: O(n) - single pass
+ * Space Complexity: O(1) iterative, O(n) recursive
  */
+
+// ─────────────────────────────────────────────────────────────────────────
+// NAIVE APPROACH (Brute Force) - O(n) time | O(n) space
+// ─────────────────────────────────────────────────────────────────────────
+// INTERVIEW SCRIPT:
+//   1. Describe:   "Brute force stores all nodes in an array, then rebuilds list in
+//                   reverse order — O(n) time but O(n) space"
+//   2. Problem:    "Uses extra space; not truly in-place"
+//   3. Transition: "With 3 pointers we reverse links in-place as we traverse
+//                   — same O(n) time but O(1) space"
+//
+// public ListNode reverseListNaive(ListNode head) {
+//     List<ListNode> nodes = new ArrayList<>();
+//     ListNode curr = head;
+//     
+//     // Store all nodes
+//     while (curr != null) {
+//         nodes.add(curr);
+//         curr = curr.next;
+//     }
+//     
+//     // Rebuild in reverse
+//     for (int i = nodes.size() - 1; i > 0; i--) {
+//         nodes.get(i).next = nodes.get(i - 1);
+//     }
+//     if (!nodes.isEmpty()) {
+//         nodes.get(0).next = null;
+//         return nodes.get(nodes.size() - 1);
+//     }
+//     return null;
+// }
+// ─────────────────────────────────────────────────────────────────────────
 
 class ListNode {
     int val;

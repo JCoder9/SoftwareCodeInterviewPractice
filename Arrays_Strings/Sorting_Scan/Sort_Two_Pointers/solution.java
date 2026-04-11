@@ -1,9 +1,48 @@
 /**
  * Sort + Two Pointers Pattern
  * 
- * Time Complexity: O(n²) typical
- * Space Complexity: O(1)
+ * Problem: Find pairs/triplets with specific sum after sorting.
+ *          Example: Two Sum in sorted array, 3Sum, 4Sum
+ * 
+ * Pattern: Sort array first, then use two pointers from opposite ends
+ * 
+ * Related LeetCode Problems:
+ * - LC 15: 3Sum (Medium) ⭐⭐⭐
+ * - LC 167: Two Sum II - Input Array Is Sorted (Medium)
+ * - LC 16: 3Sum Closest (Medium)
+ * 
+ * Time Complexity: O(n log n) for sort + O(n²) for 3Sum
+ * Space Complexity: O(1) or O(n) for result storage
  */
+
+// ─────────────────────────────────────────────────────────────────────────────
+// NAIVE APPROACH (Brute Force) — O(n³) time | O(1) space
+// ─────────────────────────────────────────────────────────────────────────────
+// INTERVIEW SCRIPT:
+//   1. Describe:   "Brute force checks all triplet combinations with 3 nested loops —
+//                  O(n³) for 3Sum"
+//   2. Problem:    "For n=100: 100³ = 1M comparisons; for n=1000: 1 billion"
+//   3. Transition: "Sort first, fix one element, use two pointers for pair — O(n²)"
+//
+// public List<List<Integer>> threeSumNaive(int[] nums) {
+//     List<List<Integer>> result = new ArrayList<>();
+//     int n = nums.length;
+//     for (int i = 0; i < n; i++) {
+//         for (int j = i + 1; j < n; j++) {
+//             for (int k = j + 1; k < n; k++) {
+//                 if (nums[i] + nums[j] + nums[k] == 0) {
+//                     List<Integer> triplet = Arrays.asList(nums[i], nums[j], nums[k]);
+//                     Collections.sort(triplet);
+//                     if (!result.contains(triplet)) {
+//                         result.add(triplet);
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     return result;
+// }
+// ─────────────────────────────────────────────────────────────────────────────
 
 import java.util.*;
 

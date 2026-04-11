@@ -10,6 +10,27 @@
  */
 
 public class Solution {
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // NAIVE APPROACH (Brute Force) - O(n) time | O(n) space
+    // ─────────────────────────────────────────────────────────────────────────
+    // INTERVIEW SCRIPT:
+    //   1. Describe:   "Brute force creates a new array and copies elements from
+    //                   end to start — O(n) time, O(n) space"
+    //   2. Problem:    "Uses extra space for the new array; not in-place"
+    //   3. Transition: "With two pointers from opposite ends we swap elements
+    //                   in-place — same O(n) time but O(1) space"
+    //
+    // public static void reverseCharArrayNaive(char[] a) {
+    //     char[] temp = new char[a.length];
+    //     for (int i = 0; i < a.length; i++) {
+    //         temp[i] = a[a.length - 1 - i];
+    //     }
+    //     for (int i = 0; i < a.length; i++) {
+    //         a[i] = temp[i];
+    //     }
+    // }
+    // ─────────────────────────────────────────────────────────────────────────
     
     /**
      * Reverse a character array in-place using two pointers.

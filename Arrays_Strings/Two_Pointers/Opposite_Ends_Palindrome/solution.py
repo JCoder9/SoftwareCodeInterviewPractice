@@ -10,6 +10,21 @@ Time Complexity: O(n) - single pass through string
 Space Complexity: O(1) - only using two pointers
 """
 
+# ─────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) - O(n) time | O(n) space
+# ─────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force filters all alphanumeric chars to a new string,
+#                   then compares with its reverse — O(n) time, O(n) space"
+#   2. Problem:    "Uses extra space for filtered string and its reverse"
+#   3. Transition: "With two pointers from opposite ends we skip non-alphanumeric
+#                   in-place and compare — same O(n) time but O(1) space"
+#
+# def is_palindrome_naive(s: str) -> bool:
+#     filtered = ''.join(c.lower() for c in s if c.isalnum())
+#     return filtered == filtered[::-1]
+# ─────────────────────────────────────────────────────────────────────────
+
 def is_palindrome(s: str) -> bool:
     """
     Check if string is a palindrome (ignoring non-alphanumeric, case-insensitive).

@@ -1,11 +1,38 @@
 """
 Target Sum (Add +/- to reach target)
 
-Pattern: Add + or - before each number to reach a target sum
+Problem: Assign + or - before each number to make their sum equal target.
+         Count how many ways this can be done.
 
-Time Complexity: O(n * sum)
+Pattern: Transforms into subset sum! If P = positive subset, N = negative subset:
+         P - N = target and P + N = total ⇒ P = (target + total) / 2
+         Count subsets that sum to P.
+
+Related LeetCode Problems:
+- LC 494: Target Sum (Medium) ⭐⭐⭐
+- LC 416: Partition Equal Subset Sum (Medium)
+
+Time Complexity: O(n × sum)
 Space Complexity: O(sum)
 """
+
+# ─────────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) — O(2^n) time | O(n) space
+# ─────────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force tries all 2^n ways to assign +/- to each number
+#                  — exponential time"
+#   2. Problem:    "For n=20: 1 million combinations; many redundant calculations"
+#   3. Transition: "Math reduces it to subset sum problem; DP counts subsets
+#                  — O(n × target)"
+#
+# def find_target_sum_ways_naive(nums, target, i=0, current_sum=0):
+#     if i == len(nums):
+#         return 1 if current_sum == target else 0
+#     # Add or subtract nums[i]
+#     return (find_target_sum_ways_naive(nums, target, i + 1, current_sum + nums[i]) +
+#             find_target_sum_ways_naive(nums, target, i + 1, current_sum - nums[i]))
+# ─────────────────────────────────────────────────────────────────────────────
 
 def find_target_sum_ways(nums, target):
     """

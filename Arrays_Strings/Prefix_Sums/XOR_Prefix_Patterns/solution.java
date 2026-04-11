@@ -1,9 +1,49 @@
 /**
  * XOR Prefix - Find Subarrays with XOR = K
  * 
- * Time Complexity: O(n)
- * Space Complexity: O(n)
+ * Problem: Count/find subarrays where XOR equals K.
+ *          Example: nums = [4,2,2,6,4], k = 6 → 4 subarrays
+ * 
+ * Key Insight: XOR property: a ^ b = k means a ^ k = b!
+ *              Track prefix XOR values in hashmap.
+ * 
+ * Related LeetCode Problems:
+ * - LC 1310: XOR Queries of a Subarray (Medium) ⭐⭐
+ * - LC 1442: Count Triplets That Can Form Two Arrays of Equal XOR (Medium)
+ * - LC 136: Single Number (Easy) ⭐⭐⭐
+ * 
+ * Property: prefix_xor[j] ^ prefix_xor[i] = XOR of subarray from i+1 to j
+ * 
+ * Time Complexity: O(n) - single pass with hashmap lookups
+ * Space Complexity: O(n) - hashmap storage
  */
+
+// ─────────────────────────────────────────────────────────────────────────────
+// NAIVE APPROACH (Brute Force) — O(n²) time | O(1) space
+// ─────────────────────────────────────────────────────────────────────────────
+// INTERVIEW SCRIPT:
+//   1. Describe:   "Brute force checks all subarrays with nested loops, computes XOR
+//                  for each — O(n²)"
+//   2. Problem:    "For n=1000: 1000² = 1M subarray checks; redundant XOR
+//                  computations"
+//   3. Transition: "Use prefix XOR with hashmap to find matching subarrays in
+//                  one pass — O(n)"
+//
+// public int countSubarraysXorKNaive(int[] nums, int k) {
+//     int count = 0;
+//     int n = nums.length;
+//     for (int i = 0; i < n; i++) {
+//         int xorVal = 0;
+//         for (int j = i; j < n; j++) {
+//             xorVal ^= nums[j];
+//             if (xorVal == k) {
+//                 count++;
+//             }
+//         }
+//     }
+//     return count;
+// }
+// ─────────────────────────────────────────────────────────────────────────────
 
 import java.util.*;
 

@@ -1,9 +1,41 @@
 /**
  * 2D Prefix Sum - Matrix Range Sum Query
  * 
- * Time Complexity: O(m*n) to build, O(1) per query
- * Space Complexity: O(m*n)
+ * Problem: Given a matrix, answer multiple queries for sum of rectangular regions efficiently.
+ * 
+ * Pattern: Build 2D prefix sum where prefix[i][j] = sum of all elements in rectangle
+ *          from (0,0) to (i-1,j-1). Use inclusion-exclusion to query any region in O(1).
+ * 
+ * Related LeetCode Problems:
+ * - LC 304: Range Sum Query 2D - Immutable (Medium) ⭐⭐⭐
+ * - LC 1074: Number of Submatrices That Sum to Target (Hard)
+ * - LC 1277: Count Square Submatrices with All Ones (Medium)
+ * 
+ * Time Complexity: O(m×n) to build, O(1) per query
+ * Space Complexity: O(m×n)
  */
+
+// ─────────────────────────────────────────────────────────────────────────────
+// NAIVE APPROACH (Brute Force) — O(m×n) time per query | O(1) space
+// ─────────────────────────────────────────────────────────────────────────────
+// INTERVIEW SCRIPT:
+//   1. Describe:   "Brute force sums all cells in the query rectangle each time
+//                  — O(m×n) per query"
+//   2. Problem:    "With q queries on 1000×1000 matrix: up to 1 billion operations;
+//                  preprocessing once is better"
+//   3. Transition: "Build 2D prefix sum in O(m×n), then each query is O(1)
+//                  — total O(m×n + q) instead of O(q×m×n)"
+//
+// public static int regionSumNaive(int[][] matrix, int r1, int c1, int r2, int c2) {
+//     int sum = 0;
+//     for (int i = r1; i <= r2; i++) {
+//         for (int j = c1; j <= c2; j++) {
+//             sum += matrix[i][j];
+//         }
+//     }
+//     return sum;
+// }
+// ─────────────────────────────────────────────────────────────────────────────
 
 public class Solution {
     

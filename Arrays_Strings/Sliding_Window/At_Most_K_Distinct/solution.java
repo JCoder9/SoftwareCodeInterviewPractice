@@ -25,7 +25,7 @@ public class Solution {
     // public static int longestAtMostKDistinctNaive(String s, int k) {
     //     int best = 0;
     //     for (int i = 0; i < s.length(); i++) {
-    //         Set<Character> seen = new HashSet<>();
+    //         Set<Character> seen = new HashSet<>(); //added here so that left char is removed when we move to next starting point
     //         for (int j = i; j < s.length(); j++) {
     //             seen.add(s.charAt(j));
     //             if (seen.size() <= k) best = Math.max(best, j - i + 1);

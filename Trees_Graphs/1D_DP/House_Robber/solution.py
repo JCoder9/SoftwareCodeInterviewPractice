@@ -1,20 +1,41 @@
 """
 1D Dynamic Programming - House Robber Pattern
 
+Problem: Rob houses in a row, each with money. Can't rob adjacent houses (alarm triggered).
+         Maximize total money robbed.
+
+Pattern: At each house, choose: rob it (+ skip previous) or skip it (keep previous max).
+         dp[i] = max(nums[i] + dp[i-2], dp[i-1])
+
 Related LeetCode Problems:
 - LC 198: House Robber (Medium)
 - LC 213: House Robber II (Medium) - circular
 - LC 740: Delete and Earn (Medium)
 - LC 2320: Count Number of Ways to Place Houses (Medium)
 
-Key Insight: Can't take adjacent elements.
-- dp[i] = max(rob i + dp[i-2], skip i + dp[i-1])
-- Choice: rob current house or skip it
-- For circular: solve twice excluding first or last house
-
 Time Complexity: O(n)
 Space Complexity: O(1) optimized
 """
+
+# ───────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) - O(2^n) time | O(n) space
+# ───────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force tries every valid subset: for each house, recursively
+#                   rob it (skip next) or skip it — O(2^n) exponential"
+#   2. Problem:    "For 20 houses, explores over 1 million combinations; overlapping
+#                   subproblems computed repeatedly"
+#   3. Transition: "With DP, track max at each position based on previous two decisions
+#                   — O(n) time, O(1) space"
+#
+# def rob_naive(nums, i=0):
+#     if i >= len(nums):
+#         return 0
+#     # Two choices: rob this house or skip it
+#     rob_current = nums[i] + rob_naive(nums, i + 2)
+#     skip_current = rob_naive(nums, i + 1)
+#     return max(rob_current, skip_current)
+# ───────────────────────────────────────────────────────────────────────────
 
 from typing import List
 

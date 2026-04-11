@@ -1,11 +1,56 @@
 """
 Multi-Source BFS
 
-Pattern: Start BFS from multiple sources simultaneously
+Problem: Start BFS from multiple sources simultaneously. Common for problems where
+         multiple points spread influence at the same time.
+         Example: Rotting Oranges - rotten oranges spread rot in 4 directions each minute.
 
-Time Complexity: O(rows × cols) for grids
-Space Complexity: O(rows × cols)
+Pattern: Add ALL source nodes to queue initially with distance/time 0.
+         Process level by level; nodes at same level are reached at same time.
+
+Related LeetCode Problems:
+- LC 994: Rotting Oranges (Medium) ⭐⭐⭐
+- LC 286: Walls and Gates (Medium)
+- LC 1162: As Far from Land as Possible (Medium)
+- LC 542: 01 Matrix (Medium)
+
+Time Complexity: O(rows × cols) - visit each cell at most once
+Space Complexity: O(rows × cols) - queue storage
 """
+
+# ─────────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) — O(n × rows × cols) time | O(rows×cols) space
+# ─────────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force: for each rotten orange, do separate BFS to see what
+#                  it can reach; merge results — O(n × grid_size)"
+#   2. Problem:    "For 100 rotten oranges in 1000×1000 grid: 100M operations;
+#                  massive redundant work"
+#   3. Transition: "Multi-source BFS starts all sources together; each cell visited
+#                  once — O(rows × cols)"
+#
+# def oranges_rotting_naive(grid):
+#     rows, cols = len(grid), len(grid[0])
+#     rotten_sources = []
+#     for r in range(rows):
+#         for c in range(cols):
+#             if grid[r][c] == 2:
+#                 rotten_sources.append((r, c))
+#     
+#     if not rotten_sources:
+#         return -1
+#     
+#     # Do BFS from each rotten source separately
+#     max_dist = 0
+#     for src_r, src_c in rotten_sources:
+#         queue = deque([(src_r, src_c, 0)])
+#         visited = set([(src_r, src_c)])
+#         while queue:
+#             r, c, dist = queue.popleft()
+#             max_dist = max(max_dist, dist)
+#             # ... BFS logic per source ...
+#     return max_dist
+# ─────────────────────────────────────────────────────────────────────────────
 
 from collections import deque
 

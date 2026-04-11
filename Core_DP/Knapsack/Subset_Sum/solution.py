@@ -1,11 +1,39 @@
 """
 Subset Sum Problem
 
-Pattern: Can you select items that sum to EXACTLY the target?
+Problem: Given array of integers and target sum, can you select a subset that sums exactly to target?
 
-Time Complexity: O(n * target)
+Pattern: Boolean DP where dp[s] = True if sum s is achievable.
+         For each number, update all sums we can now reach.
+
+Related LeetCode Problems:
+- LC 416: Partition Equal Subset Sum (Medium) ⭐⭐⭐
+- LC 494: Target Sum (Medium)
+- Practice problem for 0/1 Knapsack
+
+Time Complexity: O(n × target)
 Space Complexity: O(target)
 """
+
+# ─────────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) — O(2^n) time | O(n) space
+# ─────────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force generates all 2^n subsets and checks each sum
+#                  — exponential time"
+#   2. Problem:    "For n=25: 33 million subsets; many overlapping subproblems"
+#   3. Transition: "DP tracks achievable sums iteratively; each number considered once
+#                  — O(n × target)"
+#
+# def subset_sum_naive(nums, target, i=0, current_sum=0):
+#     if current_sum == target:
+#         return True
+#     if i >= len(nums) or current_sum > target:
+#         return False
+#     # Include nums[i] or exclude it
+#     return (subset_sum_naive(nums, target, i + 1, current_sum + nums[i]) or
+#             subset_sum_naive(nums, target, i + 1, current_sum))
+# ─────────────────────────────────────────────────────────────────────────────
 
 def subset_sum(nums, target):
     """

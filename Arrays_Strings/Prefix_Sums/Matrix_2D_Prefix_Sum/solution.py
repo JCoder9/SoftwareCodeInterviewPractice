@@ -1,21 +1,38 @@
 """
 2D Prefix Sum - Matrix Range Sum Query
 
-Problem: Find sum of any rectangular region in a matrix quickly.
+Problem: Given a matrix, answer multiple queries for sum of rectangular regions efficiently.
 
-Visual Example:
-Matrix:        2D Prefix Sum:
-1 2 3          1  3  6
-4 5 6    →     5 12 21
-7 8 9         12 27 45
+Pattern: Build 2D prefix sum where prefix[i][j] = sum of all elements in rectangle
+         from (0,0) to (i-1,j-1). Use inclusion-exclusion to query any region in O(1).
 
-Formula: prefix[i][j] = matrix[i-1][j-1] + prefix[i-1][j] + prefix[i][j-1] - prefix[i-1][j-1]
+Related LeetCode Problems:
+- LC 304: Range Sum Query 2D - Immutable (Medium) ⭐⭐⭐
+- LC 1074: Number of Submatrices That Sum to Target (Hard)
+- LC 1277: Count Square Submatrices with All Ones (Medium)
 
-To get region sum: prefix[r2+1][c2+1] - prefix[r1][c2+1] - prefix[r2+1][c1] + prefix[r1][c1]
-
-Time Complexity: O(m*n) to build, O(1) per query
-Space Complexity: O(m*n)
+Time Complexity: O(m×n) to build, O(1) per query
+Space Complexity: O(m×n)
 """
+
+# ─────────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) — O(m×n) time per query | O(1) space
+# ─────────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force sums all cells in the query rectangle each time
+#                  — O(m×n) per query"
+#   2. Problem:    "With q queries on 1000×1000 matrix: up to 1 billion operations;
+#                  preprocessing once is better"
+#   3. Transition: "Build 2D prefix sum in O(m×n), then each query is O(1)
+#                  — total O(m×n + q) instead of O(q×m×n)"
+#
+# def region_sum_naive(matrix, r1, c1, r2, c2):
+#     total = 0
+#     for i in range(r1, r2 + 1):
+#         for j in range(c1, c2 + 1):
+#             total += matrix[i][j]
+#     return total
+# ─────────────────────────────────────────────────────────────────────────────
 
 from typing import List
 

@@ -1,11 +1,45 @@
 """
 0/1 Knapsack (Classic)
 
-Pattern: Each item can be taken ONCE or NOT AT ALL
+Problem: Given n items with weights and values, and a knapsack with capacity W,
+         maximize value without exceeding capacity. Each item can be taken 0 or 1 times.
 
-Time Complexity: O(n * capacity)
-Space Complexity: O(n * capacity) - can be optimized to O(capacity)
+Pattern: For each item, choose to include it (if it fits) or exclude it.
+         dp[i][w] = max(dp[i-1][w], value[i] + dp[i-1][w-weight[i]])
+
+Related LeetCode Problems:
+- 0/1 Knapsack (Classic CS problem)
+- LC 416: Partition Equal Subset Sum (Medium)
+- LC 494: Target Sum (Medium)
+- LC 1049: Last Stone Weight II (Medium)
+
+Time Complexity: O(n × capacity)
+Space Complexity: O(capacity) - optimized
 """
+
+# ─────────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) — O(2^n) time | O(n) space
+# ─────────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force tries every subset: for each item, recursively include
+#                  or exclude it — exponential O(2^n)"
+#   2. Problem:    "For 30 items: over 1 billion subsets; overlapping subproblems
+#                  computed many times"
+#   3. Transition: "With DP, memoize subproblems (i, remaining_capacity) — reduces
+#                  to O(n × capacity)"
+#
+# def knapsack_naive(weights, values, capacity, i=0):
+#     if i >= len(weights) or capacity == 0:
+#         return 0
+#     # Don't take item i
+#     exclude = knapsack_naive(weights, values, capacity, i + 1)
+#     # Take item i (if it fits)
+#     include = 0
+#     if weights[i] <= capacity:
+#         include = values[i] + knapsack_naive(weights, values, 
+#                                              capacity - weights[i], i + 1)
+#     return max(include, exclude)
+# ─────────────────────────────────────────────────────────────────────────────
 
 def knapsack_01(weights, values, capacity):
     """

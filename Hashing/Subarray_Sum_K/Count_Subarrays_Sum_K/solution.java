@@ -1,13 +1,41 @@
 /**
- * Subarray Sum Equals K - Count Pattern
+ * Subarray Sum Equals K - Prefix Sum + Hash Map Pattern
  * 
- * Time Complexity: O(n)
- * Space Complexity: O(n)
+ * Problem: Given an array of integers and an integer k, count how many continuous subarrays sum to k.
+ * 
+ * Pattern: Use prefix sum + hash map. If prefixSum[j] - prefixSum[i] = k, then subarray[i..j] sums to k.
+ *          Track all prefix sums seen so far in a map.
+ * 
+ * Time Complexity: O(n) - single pass through array
+ * Space Complexity: O(n) - hash map stores up to n prefix sums
  */
 
 import java.util.*;
 
 public class Solution {
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // NAIVE APPROACH (Brute Force) - O(n²) time | O(1) space
+    // ─────────────────────────────────────────────────────────────────────────
+    // INTERVIEW SCRIPT:
+    //   1. Describe:   "Brute force checks every subarray by calculating its sum
+    //                   — O(n²) time with nested loops"
+    //   2. Problem:    "For n=10⁴, we'd do ~10⁸ operations; too slow"
+    //   3. Transition: "Key insight: if currSum - k exists in our map, we found a
+    //                   subarray. Track prefix sums in hash map — drops to O(n)"
+    //
+    // public static int subarraySumNaive(int[] nums, int k) {
+    //     int count = 0;
+    //     for (int i = 0; i < nums.length; i++) {
+    //         int sum = 0;
+    //         for (int j = i; j < nums.length; j++) {
+    //             sum += nums[j];
+    //             if (sum == k) count++;
+    //         }
+    //     }
+    //     return count;
+    // }
+    // ─────────────────────────────────────────────────────────────────────────
     
     public static int subarraySum(int[] nums, int k) {
         Map<Integer, Integer> prefixCount = new HashMap<>();

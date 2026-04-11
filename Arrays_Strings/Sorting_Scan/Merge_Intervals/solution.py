@@ -1,14 +1,59 @@
 """
 Merge Intervals - Sort + Scan Pattern
 
-Problem: Given a collection of intervals, merge all overlapping intervals.
+Problem: Given collection of intervals, merge all overlapping intervals.
+         Example: [[1,3],[2,6],[8,10],[15,18]] → [[1,6],[8,10],[15,18]]
 
 Pattern: 1. Sort intervals by start time
          2. Scan through, merging overlapping intervals
 
-Time Complexity: O(n log n) for sorting + O(n) for merging = O(n log n)
-Space Complexity: O(n) for result (or O(log n) if sorting in-place)
+Related LeetCode Problems:
+- LC 56: Merge Intervals (Medium) ⭐⭐⭐
+- LC 57: Insert Interval (Medium)
+- LC 252: Meeting Rooms (Easy)
+- LC 253: Meeting Rooms II (Medium)
+
+Time Complexity: O(n log n) - dominated by sorting
+Space Complexity: O(n) - result array
 """
+
+# ─────────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) — O(n³) time | O(n) space
+# ─────────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force compares every pair of intervals, merges if overlap,
+#                  repeats until no more merges — O(n³) worst case"
+#   2. Problem:    "For 100 intervals: up to 1 million comparisons; repeated scans
+#                  after each merge"
+#   3. Transition: "Sort first, then single scan left-to-right merging adjacent
+#                  overlaps — O(n log n)"
+#
+# def merge_intervals_naive(intervals):
+#     if not intervals:
+#         return []
+#     
+#     result = [list(interval) for interval in intervals]
+#     merged = True
+#     
+#     # Keep merging until no more overlaps found
+#     while merged:
+#         merged = False
+#         i = 0
+#         while i < len(result):
+#             j = i + 1
+#             while j < len(result):
+#                 # Check if intervals[i] and intervals[j] overlap
+#                 if not (result[i][1] < result[j][0] or result[j][1] < result[i][0]):
+#                     # Merge them
+#                     result[i] = [min(result[i][0], result[j][0]),
+#                                  max(result[i][1], result[j][1])]
+#                     result.pop(j)
+#                     merged = True
+#                     break
+#                 j += 1
+#             i += 1
+#     return result
+# ─────────────────────────────────────────────────────────────────────────────
 
 from typing import List
 

@@ -12,6 +12,34 @@
 
 import java.util.*;
 
+// ─────────────────────────────────────────────────────────────────────────
+// NAIVE APPROACH (Brute Force) - O(q × n) time | O(1) space
+//   where q = number of queries, n = array length
+// ─────────────────────────────────────────────────────────────────────────
+// INTERVIEW SCRIPT:
+//   1. Describe:   "Brute force loops through the range for each query to calculate
+//                   the sum — O(n) per query, O(q × n) for q queries"
+//   2. Problem:    "For 10⁴ queries on array of 10⁴ elements, we'd do ~10⁸ operations"
+//   3. Transition: "With prefix sums we precompute cumulative sums once in O(n),
+//                   then answer each query in O(1) — total O(n + q)"
+//
+// class NumArrayNaive {
+//     private int[] nums;
+//     
+//     public NumArrayNaive(int[] nums) {
+//         this.nums = nums;
+//     }
+//     
+//     public int sumRange(int left, int right) {
+//         int sum = 0;
+//         for (int i = left; i <= right; i++) {
+//             sum += nums[i];
+//         }
+//         return sum;
+//     }
+// }
+// ─────────────────────────────────────────────────────────────────────────
+
 class NumArray {
     private int[] prefix;
     
@@ -20,7 +48,7 @@ class NumArray {
      * prefix[i] = sum of nums[0] to nums[i-1]
      */
     public NumArray(int[] nums) {
-        prefix = new int[nums.length + 1];
+        prefix = new int[nums.length + 1];  // +1 to handle prefix[0] = 0
         for (int i = 0; i < nums.length; i++) {
             prefix[i + 1] = prefix[i] + nums[i];
         }
@@ -28,6 +56,15 @@ class NumArray {
     
     /**
      * Return sum of elements from index left to right (inclusive).
+     * 
+     * Visual Example:
+     * nums = [3, 1, 4, 2, 5]
+     * prefix = [0, 3, 4, 8, 10, 15]
+     * 
+     * sumRange(1, 3) = sum of [1, 4, 2]
+     *   = prefix[4] - prefix[1]
+     *   = 10 - 3
+     *   = 7
      */
     public int sumRange(int left, int right) {
         return prefix[right + 1] - prefix[left];
@@ -35,58 +72,20 @@ class NumArray {
 }
 
 public class Solution {
-    
-    /**
-     * Count number of subarrays with sum equal to k.
-     * 
-     * Key insight: If prefix[j] - prefix[i] = k, then subarray [i, j) sums to k.
-     * Use hash map to track prefix sums seen so far.
-     */
-    public static int subarraySumEqualsK(int[] nums, int k) {
-        int count = 0;
-        int prefixSum = 0;
-        Map<Integer, Integer> prefixMap = new HashMap<>();
-        prefixMap.put(0, 1);  // Empty prefix
-        
-        for (int num : nums) {
-            prefixSum += num;
-            
-            // Check if (prefixSum - k) exists
-            if (prefixMap.containsKey(prefixSum - k)) {
-                count += prefixMap.get(prefixSum - k);
-            }
-            
-            // Record current prefix sum
-            prefixMap.put(prefixSum, prefixMap.getOrDefault(prefixSum, 0) + 1);
-        }
-        
-        return count;
-    }
-
     public static void main(String[] args) {
-        // Test range sum query
-        System.out.println("Range Sum Query:");
+        System.out.println("=== Range Sum Query (LC 303) ===");
         int[] nums = {-2, 0, 3, -5, 2, -1};
         NumArray obj = new NumArray(nums);
+        
         int[][] queries = {{0, 2}, {2, 5}, {0, 5}};
         for (int[] q : queries) {
-            System.out.println("  sumRange(" + q[0] + ", " + q[1] + ") = " + obj.sumRange(q[0], q[1]));
+            int result = obj.sumRange(q[0], q[1]);
+            System.out.println("sumRange(" + q[0] + ", " + q[1] + ") = " + result);
         }
         
-        // Test subarray sum equals k
-        System.out.println("\nSubarray Sum Equals K:");
-        Object[][] testCases = {
-            {new int[]{1, 1, 1}, 2, 2},
-            {new int[]{1, 2, 3}, 3, 2},
-            {new int[]{1}, 0, 0}
-        };
-        for (Object[] test : testCases) {
-            int[] arr = (int[]) test[0];
-            int k = (int) test[1];
-            int expected = (int) test[2];
-            int result = subarraySumEqualsK(arr, k);
-            String status = (result == expected) ? "✓" : "✗";
-            System.out.println(status + " subarraySumEqualsK(" + Arrays.toString(arr) + ", k=" + k + ") = " + result);
-        }
+        // Visual breakdown for query [1, 3]:
+        // nums    = [-2, 0, 3, -5, 2, -1]
+        // prefix  = [0, -2, -2, 1, -4, -2, -3]
+        // sumRange(2, 5) = prefix[6] - prefix[2] = -3 - (-2) = -1
     }
 }

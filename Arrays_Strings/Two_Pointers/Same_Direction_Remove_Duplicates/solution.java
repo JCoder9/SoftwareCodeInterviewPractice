@@ -13,6 +13,35 @@
 import java.util.Arrays;
 
 public class Solution {
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // NAIVE APPROACH (Brute Force) - O(n) time | O(n) space
+    // ─────────────────────────────────────────────────────────────────────────
+    // INTERVIEW SCRIPT:
+    //   1. Describe:   "Brute force creates a new array and only copies elements
+    //                   that differ from previous — O(n) time, O(n) space"
+    //   2. Problem:    "Uses extra space; can't do it in-place"
+    //   3. Transition: "With two pointers (slow for write, fast for scanning) we
+    //                   overwrite duplicates in-place — same O(n) time but O(1) space"
+    //
+    // public static int removeDuplicatesNaive(int[] nums) {
+    //     if (nums.length == 0) return 0;
+    //     
+    //     int[] temp = new int[nums.length];
+    //     temp[0] = nums[0];
+    //     int idx = 1;
+    //     for (int i = 1; i < nums.length; i++) {
+    //         if (nums[i] != nums[i - 1]) {
+    //             temp[idx++] = nums[i];
+    //         }
+    //     }
+    //     // Copy back
+    //     for (int i = 0; i < idx; i++) {
+    //         nums[i] = temp[i];
+    //     }
+    //     return idx;
+    // }
+    // ─────────────────────────────────────────────────────────────────────────
     
     /**
      * Remove duplicates from sorted array in-place.

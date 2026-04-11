@@ -12,6 +12,34 @@ Space Complexity: O(1) - two fixed-size arrays of 26
 
 from typing import List
 
+# ─────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) - O(n × m × 26) time | O(1) space
+# ─────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force checks every substring of length m and compares
+#                   frequency arrays — O(n × m × 26) ≈ O(n × m)"
+#   2. Problem:    "For large inputs (n=10⁴, m=1000), this means ~10⁷ operations"
+#   3. Transition: "With a sliding window we maintain one frequency array and
+#                   update it incrementally as we slide — drops to O(n)"
+#
+# def find_anagrams_naive(s: str, p: str) -> List[int]:
+#     if len(s) < len(p):
+#         return []
+#     
+#     need = [0] * 26
+#     for c in p:
+#         need[ord(c) - ord('a')] += 1
+#     
+#     res = []
+#     for i in range(len(s) - len(p) + 1):
+#         win = [0] * 26
+#         for j in range(i, i + len(p)):
+#             win[ord(s[j]) - ord('a')] += 1
+#         if win == need:
+#             res.append(i)
+#     return res
+# ─────────────────────────────────────────────────────────────────────────
+
 def find_anagrams(s: str, p: str) -> List[int]:
     """
     Find all starting indices of p's anagrams in s.

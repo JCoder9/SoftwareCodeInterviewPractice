@@ -12,6 +12,27 @@
 import java.util.Arrays;
 
 public class Solution {
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // NAIVE APPROACH (Brute Force) - O((m+n) log(m+n)) time | O(m+n) space
+    // ─────────────────────────────────────────────────────────────────────────
+    // INTERVIEW SCRIPT:
+    //   1. Describe:   "Brute force combines both arrays and sorts the result
+    //                   — O((m+n) log(m+n)) time"
+    //   2. Problem:    "Doesn't use the fact that inputs are already sorted;
+    //                   wastes time re-sorting"
+    //   3. Transition: "With two pointers (one per array) we merge in one pass,
+    //                   picking the smaller element each time — drops to O(m+n)"
+    //
+    // public static int[] mergeSortedNaive(int[] a, int[] b) {
+    //     int[] result = new int[a.length + b.length];
+    //     int idx = 0;
+    //     for (int x : a) result[idx++] = x;
+    //     for (int x : b) result[idx++] = x;
+    //     Arrays.sort(result);
+    //     return result;
+    // }
+    // ─────────────────────────────────────────────────────────────────────────
     
     /**
      * Merge two sorted arrays into a single sorted array.

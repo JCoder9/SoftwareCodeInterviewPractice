@@ -11,6 +11,28 @@ Space Complexity: O(1) - only tracking window sum and pointers
 
 from typing import List
 
+# ─────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) - O(n²) time | O(1) space
+# ─────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force checks every subarray and calculates its sum
+#                   — O(n²) time with O(1) space"
+#   2. Problem:    "For n=10⁴, we'd do ~10⁸ operations; too slow for large inputs"
+#   3. Transition: "With a sliding window we maintain the sum and shrink when valid
+#                   (sum >= S) to minimize. Each element visited twice — drops to O(n)"
+#
+# def min_len_sum_at_least_s_naive(nums: List[int], S: int) -> int:
+#     best = float('inf')
+#     for i in range(len(nums)):
+#         window_sum = 0
+#         for j in range(i, len(nums)):
+#             window_sum += nums[j]
+#             if window_sum >= S:
+#                 best = min(best, j - i + 1)
+#                 break  # no need to extend further from this starting point
+#     return 0 if best == float('inf') else best
+# ─────────────────────────────────────────────────────────────────────────
+
 def min_len_sum_at_least_s(nums: List[int], S: int) -> int:
     """
     Find minimum length of subarray with sum >= S.

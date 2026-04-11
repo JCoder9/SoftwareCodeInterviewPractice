@@ -1,11 +1,61 @@
 """
 Basic Topological Sort (Kahn's Algorithm - BFS approach)
 
-Pattern: Start with nodes that have no prerequisites, process them, then remove them and repeat
+Problem: Given directed graph, find a valid ordering where for every edge u→v, u comes before v.
+         Used for dependency resolution, task scheduling.
 
-Time Complexity: O(V + E)
-Space Complexity: O(V + E)
+Pattern: Start with nodes having no incoming edges (in-degree = 0).
+         Process them, remove edges, repeat. If can't process all nodes → cycle exists.
+
+Related LeetCode Problems:
+- LC 207: Course Schedule (Medium) ⭐⭐⭐
+- LC 210: Course Schedule II (Medium) ⭐⭐⭐
+- LC 802: Find Eventual Safe States (Medium)
+
+Time Complexity: O(V + E) - visit each vertex and edge once
+Space Complexity: O(V + E) - graph storage
 """
+
+# ─────────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) — O(V^2 + V×E) time | O(V) space
+# ─────────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force repeatedly scans for any node that has all its
+#                  dependencies satisfied, marks it done, repeats — O(V^2)"
+#   2. Problem:    "For V=1000 nodes: scans array 1000 times checking dependencies
+#                  each time; very inefficient"
+#   3. Transition: "Kahn's algorithm maintains in-degree count; queue tracks ready
+#                  nodes — O(V + E) single pass"
+#
+# def topological_sort_naive(n, edges):
+#     graph = defaultdict(list)
+#     for src, dst in edges:
+#         graph[src].append(dst)
+#     
+#     visited = set()
+#     result = []
+#     
+#     while len(result) < n:
+#         # Find any node with all dependencies satisfied
+#         found = False
+#         for node in range(n):
+#             if node in visited:
+#                 continue
+#             # Check if all predecessors are visited
+#             has_unvisited_dep = False
+#             for src in range(n):
+#                 if node in graph[src] and src not in visited:
+#                     has_unvisited_dep = True
+#                     break
+#             if not has_unvisited_dep:
+#                 result.append(node)
+#                 visited.add(node)
+#                 found = True
+#                 break
+#         if not found:  # Cycle detected
+#             return []
+#     return result
+# ─────────────────────────────────────────────────────────────────────────────
 
 from collections import deque, defaultdict
 

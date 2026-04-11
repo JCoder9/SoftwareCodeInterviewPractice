@@ -2,7 +2,7 @@
 
 ## 🟢 JUNIOR LEVEL (Start Here!)
 
-### Top 19 Must-Know Patterns
+### Top 20 Must-Know Patterns
 
 #### Two Pointers
 1. **Two Pointers - Remove Duplicates** (`Arrays_Strings/Two_Pointers/Same_Direction_Remove_Duplicates/`)
@@ -19,25 +19,28 @@
 8. **Hash Set - Two Sum** (`Hashing/Seen_Set/Two_Sum_Classic/`)
 9. **Frequency Counter - Valid Anagram** (`Hashing/Frequency_Counting/Valid_Anagram/`)
 
+#### Prefix Sums
+10. **Prefix Sum - Range Sum Query** (`Arrays_Strings/Prefix_Sums/Range_Sum_Query/`)
+
 #### Linked Lists
-10. **Fast/Slow - Find Middle** (`Linked_Structures/Fast_Slow_Pointers/Find_Middle/`)
-11. **Fast/Slow - Detect Cycle** (`Linked_Structures/Fast_Slow_Pointers/Detect_Cycle/`)
-12. **Reverse Linked List** (`Linked_Structures/In_Place_Reversal/Reverse_Entire_List/`)
+11. **Fast/Slow - Find Middle** (`Linked_Structures/Fast_Slow_Pointers/Find_Middle/`)
+12. **Fast/Slow - Detect Cycle** (`Linked_Structures/Fast_Slow_Pointers/Detect_Cycle/`)
+13. **Reverse Linked List** (`Linked_Structures/In_Place_Reversal/Reverse_Entire_List/`)
 
 #### Trees
-13. **Tree DFS - Traversals** (`Trees_Graphs/DFS_Recursion/Basic_Tree_DFS/`)
-14. **Tree BFS - Level Order** (`Trees_Graphs/BFS/Basic_Tree_BFS/`)
+14. **Tree DFS - Traversals** (`Trees_Graphs/DFS_Recursion/Basic_Tree_DFS/`)
+15. **Tree BFS - Level Order** (`Trees_Graphs/BFS/Basic_Tree_BFS/`)
 
 #### 1D Dynamic Programming
-15. **DP - Climbing Stairs** (`Trees_Graphs/1D_DP/Climbing_Stairs/`)
-16. **DP - House Robber** (`Trees_Graphs/1D_DP/House_Robber/`)
-17. **DP - Maximum Subarray (Kadane's)** (`Trees_Graphs/1D_DP/Maximum_Subarray_Kadane/`)
+16. **DP - Climbing Stairs** (`Trees_Graphs/1D_DP/Climbing_Stairs/`)
+17. **DP - House Robber** (`Trees_Graphs/1D_DP/House_Robber/`)
+18. **DP - Maximum Subarray (Kadane's)** (`Trees_Graphs/1D_DP/Maximum_Subarray_Kadane/`)
 
 #### Stack
-18. **Stack - Valid Parentheses / Min Stack** (`Stacks_Queues/Basic_Stack/`)
+19. **Stack - Valid Parentheses / Min Stack** (`Stacks_Queues/Basic_Stack/`)
 
 #### Binary Search
-19. **Binary Search** (`Arrays_Strings/Binary_Search/Basic_Binary_Search/`)
+20. **Binary Search** (`Arrays_Strings/Binary_Search/Basic_Binary_Search/`)
 
 **Time to Master:** 2-3 months  
 **LeetCode Target:** 60-70 Easy, 15-20 Medium
@@ -46,32 +49,65 @@
 
 ## 🟡 MID-LEVEL (Most Interviews)
 
-### Top 22 Must-Know Patterns
+### Top 30 Must-Know Patterns
+
+#### Advanced Sliding Window & Arrays
 1. **Sliding Window - Min Window** (`Arrays_Strings/Sliding_Window/Minimum_Window_Substring/`) ⭐
 2. **Sliding Window - Find All Anagrams** (`Arrays_Strings/Sliding_Window/Anagram_Pattern/`) ⭐⭐
-3. **Graph DFS** (`Trees_Graphs/DFS_Recursion/Graph_DFS_Visited/`) ⭐⭐⭐
-4. **Graph BFS** (`Trees_Graphs/BFS/Graph_BFS/`) ⭐⭐⭐
-5. **Grid BFS** (`Trees_Graphs/BFS/Grid_BFS/`) ⭐⭐⭐
-6. **Multi-Source BFS** (`Trees_Graphs/BFS/Multi_Source/`) ⭐⭐
-7. **0/1 Knapsack** (`Core_DP/Knapsack/01_Knapsack/`) ⭐⭐⭐
-8. **Subset Sum** (`Core_DP/Knapsack/Subset_Sum/`) ⭐⭐
-9. **Target Sum** (`Core_DP/Knapsack/Target_Sum/`) ⭐⭐
-10. **Coin Change Min** (`Core_DP/Knapsack/Coin_Change/`) ⭐⭐⭐
-11. **Coin Change Count** (`Core_DP/Knapsack/Coin_Change_II/`) ⭐⭐
-12. **LCS** (`Core_DP/LCS_Edit_Distance/Longest_Common_Subsequence/`) ⭐⭐⭐
-13. **Edit Distance** (`Core_DP/LCS_Edit_Distance/Edit_Distance/`) ⭐⭐⭐
-14. **Kth Largest** (`Trees_Graphs/Heap_K_Way_Merge/Kth_Largest_Element/`) ⭐⭐
-15. **Merge K Lists** (`Trees_Graphs/Heap_K_Way_Merge/Merge_K_Sorted_Lists/`) ⭐⭐⭐
-16. **Top K Frequent** (`Trees_Graphs/Heap_K_Way_Merge/Top_K_Frequent_Elements/`) ⭐⭐
-17. **Topological Sort (Kahn's)** (`Trees_Graphs/Topological_Sort/Basic_Kahns_Algorithm/`) ⭐⭐
-18. **Course Schedule** (`Trees_Graphs/Topological_Sort/Course_Schedule/`) ⭐⭐⭐
+3. **Subarray Sum Equals K** (`Arrays_Strings/Prefix_Sums/Subarray_Sum_Equals_K/`) ⭐⭐⭐
+   - **LC 560** - Asked at Google, Facebook, Amazon, Microsoft
+   - Combines prefix sums + HashMap tracking
+   - Includes variants: max length, divisible by K, multiple of K
+4. **Product Except Self** (`Arrays_Strings/Prefix_Sums/Product_Arrays_Sliding_Window/`) ⭐⭐
+5. **Matrix 2D Prefix Sum** (`Arrays_Strings/Prefix_Sums/Matrix_2D_Prefix_Sum/`) ⭐⭐
+
+#### Monotonic Stack (Common Pattern!)
+6. **Next Greater Element** (`Trees_Graphs/Monotonic_Stack/Next_Greater_Element/`) ⭐⭐⭐
+
+#### Graph Traversal
+7. **Graph DFS** (`Trees_Graphs/DFS_Recursion/Graph_DFS_Visited/`) ⭐⭐⭐
+8. **Graph BFS** (`Trees_Graphs/BFS/Graph_BFS/`) ⭐⭐⭐
+9. **Grid BFS** (`Trees_Graphs/BFS/Grid_BFS/`) ⭐⭐⭐
+10. **Multi-Source BFS** (`Trees_Graphs/BFS/Multi_Source/`) ⭐⭐
+
+#### Knapsack DP
+11. **0/1 Knapsack** (`Core_DP/Knapsack/01_Knapsack/`) ⭐⭐⭐
+12. **Subset Sum** (`Core_DP/Knapsack/Subset_Sum/`) ⭐⭐
+13. **Target Sum** (`Core_DP/Knapsack/Target_Sum/`) ⭐⭐
+14. **Coin Change Min** (`Core_DP/Knapsack/Coin_Change/`) ⭐⭐⭐
+15. **Coin Change Count** (`Core_DP/Knapsack/Coin_Change_II/`) ⭐⭐
+
+#### String DP
+16. **LCS** (`Core_DP/LCS_Edit_Distance/Longest_Common_Subsequence/`) ⭐⭐⭐
+17. **Edit Distance** (`Core_DP/LCS_Edit_Distance/Edit_Distance/`) ⭐⭐⭐
+
+#### More 1D DP
+18. **Decode Ways** (`Trees_Graphs/1D_DP/Decode_Ways/`) ⭐⭐
 19. **LIS** (`Trees_Graphs/1D_DP/Longest_Increasing_Subsequence/`) ⭐⭐
 20. **Word Break** (`Trees_Graphs/1D_DP/Word_Break/`) ⭐⭐
-21. **Merge Intervals** (`Arrays_Strings/Sorting_Scan/Merge_Intervals/`) ⭐⭐
-22. **Backtracking** (`Trees_Graphs/DFS_Recursion/Backtracking/`) ⭐⭐⭐
+
+#### Heaps & Priority Queues
+21. **Kth Largest** (`Trees_Graphs/Heap_K_Way_Merge/Kth_Largest_Element/`) ⭐⭐
+22. **Merge K Lists** (`Trees_Graphs/Heap_K_Way_Merge/Merge_K_Sorted_Lists/`) ⭐⭐⭐
+23. **Top K Frequent** (`Trees_Graphs/Heap_K_Way_Merge/Top_K_Frequent_Elements/`) ⭐⭐
+
+#### Topological Sort
+24. **Topological Sort (Kahn's)** (`Trees_Graphs/Topological_Sort/Basic_Kahns_Algorithm/`) ⭐⭐
+25. **Course Schedule** (`Trees_Graphs/Topological_Sort/Course_Schedule/`) ⭐⭐⭐
+
+#### Sorting Patterns
+26. **3Sum** (`Arrays_Strings/Sorting_Scan/ThreeSum/`) ⭐⭐⭐
+27. **Merge Intervals** (`Arrays_Strings/Sorting_Scan/Merge_Intervals/`) ⭐⭐
+28. **Sort + Two Pointers (General)** (`Arrays_Strings/Sorting_Scan/Sort_Two_Pointers/`) ⭐⭐
+
+#### Advanced Techniques
+29. **Backtracking** (`Trees_Graphs/DFS_Recursion/Backtracking/`) ⭐⭐⭐
+30. **XOR Prefix Patterns** (`Arrays_Strings/Prefix_Sums/XOR_Prefix_Patterns/`) ⭐
 
 **Time to Master:** 3-4 months (after junior)  
 **LeetCode Target:** 120-150 Medium, 15-25 Hard
+
+**Note:** Subarray Sum Equals K (LC 560) and 3Sum are among the most commonly asked problems - master these patterns!
 
 ---
 
@@ -105,6 +141,7 @@
 - Two Pointers
 - Sliding Window
 - Hash Maps/Sets
+- Prefix Sums (Range Query, Subarray Sum K)
 - BFS/DFS on Trees
 - Graph Traversal
 - 1D DP basics
@@ -112,9 +149,11 @@
 ### Very Common (50-70% of interviews)
 - Knapsack DP variants
 - String DP (LCS, Edit Distance)
-- Heaps
+- Heaps & Priority Queues
 - Binary Search
+- Monotonic Stack (Next Greater Element)
 - Topological Sort
+- Product Array / 2D Prefix Sums
 
 ### Common in Top Companies (30-50% of interviews)
 - Monotonic Stack
@@ -139,17 +178,18 @@
 - **Week 3**: Sliding Window Fixed + Variable
 - **Week 4**: Fast/Slow Pointers + Reverse List
 - **Week 5**: Basic Tree DFS + BFS
-- **Week 6**: Simple DP (Climbing Stairs, House Robber)
-- **Week 7**: Prefix Sums + Practice
+- **Week 6**: Simple DP (Climbing Stairs, House Robber, Kadane's)
+- **Week 7**: Prefix Sums (Range Query) + Binary Search
 - **Week 8**: Mock Interviews + Review
 
 ### 🟡 Mid-Level (12 weeks)
-- **Week 1-2**: All Sliding Window + Graph DFS/BFS
-- **Week 3-4**: Knapsack DP (0/1, Subset Sum, Coin Change)
-- **Week 5-6**: String DP (LCS, Edit Distance)
-- **Week 7-8**: Heaps + K-way Merge + Binary Search
-- **Week 9-10**: Topological Sort + Advanced Trees
-- **Week 11**: Full-length practice problems
+- **Week 1-2**: Advanced Sliding Window + Subarray Sum K + 2D Prefix Sums + Product Array
+- **Week 3-4**: Monotonic Stack (Next Greater) + Graph DFS/BFS
+- **Week 5-6**: Knapsack DP (0/1, Subset Sum, Coin Change)
+- **Week 7-8**: String DP (LCS, Edit Distance) + More 1D DP (Decode Ways, LIS)
+- **Week 9**: Heaps + K-way Merge + Binary Search
+- **Week 10**: Topological Sort + Sort+Two Pointers
+- **Week 11**: XOR Patterns + Backtracking + Full-length practice
 - **Week 12**: Mock interviews + weak areas
 
 ### 🔴 Senior/FAANG (16 weeks)

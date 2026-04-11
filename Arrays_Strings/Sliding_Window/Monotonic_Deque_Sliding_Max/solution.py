@@ -14,6 +14,27 @@ Space Complexity: O(k) - deque holds at most k elements
 from collections import deque
 from typing import List
 
+# ─────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) - O(n × k) time | O(1) space
+# ─────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force finds the max for each window by scanning all k
+#                   elements — O(n × k) time"
+#   2. Problem:    "For n=10⁵ and k=10³, we'd do ~10⁸ operations"
+#   3. Transition: "With a monotonic deque we maintain potential maxes in decreasing
+#                   order. Front always holds current max — drops to O(n)"
+#
+# def max_sliding_window_naive(nums: List[int], k: int) -> List[int]:
+#     if not nums or k <= 0 or k > len(nums):
+#         return []
+#     
+#     res = []
+#     for i in range(len(nums) - k + 1):
+#         window_max = max(nums[i:i + k])
+#         res.append(window_max)
+#     return res
+# ─────────────────────────────────────────────────────────────────────────
+
 def max_sliding_window(nums: List[int], k: int) -> List[int]:
     """
     Find maximum in each sliding window of size k.

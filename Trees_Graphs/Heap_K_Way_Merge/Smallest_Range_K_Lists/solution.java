@@ -1,3 +1,38 @@
+/**
+ * Heap/K-Way Merge - Smallest Range Covering K Lists (LC 632)
+ * 
+ * Problem: Find smallest range including at least one number from each of k lists.
+ *          Example: [[4,10,15],[0,9,12],[5,18,22]] → [20,24]
+ * 
+ * Pattern: K-way merge with min-heap, track current max while processing min
+ * 
+ * Related LeetCode Problems:
+ * - LC 632: Smallest Range Covering Elements from K Lists (Hard) ⭐⭐⭐
+ * - LC 23: Merge k Sorted Lists (Hard)
+ * - LC 373: Find K Pairs with Smallest Sums (Medium)
+ * 
+ * Time Complexity: O(N log k) - N total elements, k-size heap
+ * Space Complexity: O(k) - heap size
+ */
+
+// ─────────────────────────────────────────────────────────────────────────────
+// NAIVE APPROACH (Brute Force) — O(n1 × n2 × ... × nk) time | O(1) space
+// ─────────────────────────────────────────────────────────────────────────────
+// INTERVIEW SCRIPT:
+//   1. Describe:   "Brute force tries all combinations of picking one element from
+//                  each list — O(n1 × n2 × ... × nk)"
+//   2. Problem:    "For k=3 lists with n=100 each: 100^3 = 1M combinations"
+//   3. Transition: "Use min-heap for k-way merge, track current max — O(N log k)"
+//
+// // Conceptual - would generate all combinations via nested loops or recursion
+// public int[] smallestRangeNaive(List<List<Integer>> nums) {
+//     // Try all combinations: one element from each list
+//     // For each combination, compute min and max
+//     // Track smallest range seen
+//     return new int[]{minVal, maxVal};
+// }
+// ─────────────────────────────────────────────────────────────────────────────
+
 import java.util.*;
 
 public class Solution {

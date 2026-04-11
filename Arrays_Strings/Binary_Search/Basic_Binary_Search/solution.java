@@ -2,16 +2,6 @@ import java.util.*;
 
 /**
  * Binary Search - Classic Divide and Conquer Search
- *
- * Problem (LC 704): Given a sorted array of integers and a target, return the
- * index of the target if it exists, otherwise return -1.
- *
- * Problem (LC 35): Given a sorted array and a target, return the index to insert
- * the target so the array stays sorted (or return the index if it already exists).
- *
- * Problem (LC 34): Given a sorted array and a target, return the first and last
- * indices of the target. Return [-1, -1] if not found.
- *
  * Pattern: Maintain a [left, right] window. Each iteration eliminate half the
  *          search space by comparing the midpoint to the target.
  *
@@ -39,6 +29,8 @@ public class solution {
     // ─────────────────────────────────────────────────────────────────────────
 
     // ── Binary Search (LC 704) ────────────────────────────────────────────────
+    // * Problem (LC 704): Given a sorted array of integers and a target, return the
+    // * index of the target if it exists, otherwise return -1.
     // Pattern: Maintain [left, right] window; halve each iteration on comparison.
     // Key detail: mid = left + (right - left) / 2  — avoids integer overflow.
     // Time: O(log n)  Space: O(1)
@@ -54,6 +46,8 @@ public class solution {
     }
 
     // ── Search Insert Position (LC 35) ────────────────────────────────────────
+    // Problem (LC 35): Given a sorted array and a target, return the index to insert
+    // the target so the array stays sorted (or return the index if it already exists).
     // Pattern: Same loop; when target is absent, left is the insertion index.
     // Time: O(log n)  Space: O(1)
     static int searchInsert(int[] nums, int target) {
@@ -68,6 +62,8 @@ public class solution {
     }
 
     // ── Find First and Last Position (LC 34) ──────────────────────────────────
+    // Problem (LC 34): Given a sorted array and a target, return the first and last
+    // indices of the target. Return [-1, -1] if not found.
     // Pattern: Two passes — one biased left (keep going left on hit),
     //          one biased right (keep going right on hit).
     // Time: O(log n)  Space: O(1)

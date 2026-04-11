@@ -11,6 +11,29 @@ Space Complexity: O(1) - only tracking window sum and pointers
 
 from typing import List
 
+# ─────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) - O(n²) time | O(1) space
+# ─────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force checks every subarray and calculates its sum
+#                   — O(n²) time with O(1) space"
+#   2. Problem:    "For n=10⁴, we'd do ~10⁸ operations; too slow"
+#   3. Transition: "With a sliding window we maintain the sum and shrink when
+#                   sum > S. Each element visited at most twice — drops to O(n)"
+#
+# def max_len_sum_at_most_s_naive(nums: List[int], S: int) -> int:
+#     best = 0
+#     for i in range(len(nums)):
+#         window_sum = 0
+#         for j in range(i, len(nums)):
+#             window_sum += nums[j]
+#             if window_sum <= S:
+#                 best = max(best, j - i + 1)
+#             else:
+#                 break  # sum will only increase with positive nums
+#     return best
+# ─────────────────────────────────────────────────────────────────────────
+
 def max_len_sum_at_most_s(nums: List[int], S: int) -> int:
     """
     Find maximum length of subarray with sum <= S.

@@ -11,6 +11,27 @@ Space Complexity: O(1) - only tracking window sum
 
 from typing import List, Optional
 
+# ─────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) - O(n × k) time | O(1) space
+# ─────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force recalculates the sum for each window of size k
+#                   from scratch — O(n × k) time"
+#   2. Problem:    "For n=10⁵ and k=10³, we'd do ~10⁸ operations"
+#   3. Transition: "With a sliding window we maintain the sum incrementally:
+#                   add new element, subtract old — drops to O(n)"
+#
+# def max_sum_k_naive(nums: List[int], k: int) -> Optional[int]:
+#     if len(nums) < k or k <= 0:
+#         return None
+#     
+#     best = float('-inf')
+#     for i in range(len(nums) - k + 1):
+#         window_sum = sum(nums[i:i + k])
+#         best = max(best, window_sum)
+#     return best
+# ─────────────────────────────────────────────────────────────────────────
+
 def max_sum_k(nums: List[int], k: int) -> Optional[int]:
     """
     Find maximum sum of any subarray of length k.

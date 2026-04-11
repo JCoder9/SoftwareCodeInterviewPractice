@@ -12,6 +12,32 @@
 import java.util.Arrays;
 
 public class Solution {
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // NAIVE APPROACH (Brute Force) - O(n²) time | O(1) space
+    // ─────────────────────────────────────────────────────────────────────────
+    // INTERVIEW SCRIPT:
+    //   1. Describe:   "Brute force checks every subarray and calculates its sum
+    //                   — O(n²) time with O(1) space"
+    //   2. Problem:    "For n=10⁴, we'd do ~10⁸ operations; too slow for large inputs"
+    //   3. Transition: "With a sliding window we maintain the sum and shrink when valid
+    //                   (sum >= S) to minimize. Each element visited twice — drops to O(n)"
+    //
+    // public static int minLenSumAtLeastSNaive(int[] nums, int S) {
+    //     int best = Integer.MAX_VALUE;
+    //     for (int i = 0; i < nums.length; i++) {
+    //         int sum = 0;
+    //         for (int j = i; j < nums.length; j++) {
+    //             sum += nums[j];
+    //             if (sum >= S) {
+    //                 best = Math.min(best, j - i + 1);
+    //                 break; // no need to extend further from this starting point
+    //             }
+    //         }
+    //     }
+    //     return best == Integer.MAX_VALUE ? 0 : best;
+    // }
+    // ─────────────────────────────────────────────────────────────────────────
     
     /**
      * Find minimum length of subarray with sum >= S.

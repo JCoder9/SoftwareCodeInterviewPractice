@@ -12,6 +12,29 @@ Space Complexity: O(1) - in-place modification
 
 from typing import List
 
+# ─────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) - O(n) time | O(n) space
+# ─────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force creates a new list and only appends elements
+#                   that differ from previous — O(n) time, O(n) space"
+#   2. Problem:    "Uses extra space; can't do it in-place"
+#   3. Transition: "With two pointers (slow for write, fast for scanning) we
+#                   overwrite duplicates in-place — same O(n) time but O(1) space"
+#
+# def remove_duplicates_naive(nums: List[int]) -> int:
+#     if not nums:
+#         return 0
+#     temp = [nums[0]]
+#     for i in range(1, len(nums)):
+#         if nums[i] != nums[i - 1]:
+#             temp.append(nums[i])
+#     # Copy back
+#     for i in range(len(temp)):
+#         nums[i] = temp[i]
+#     return len(temp)
+# ─────────────────────────────────────────────────────────────────────────
+
 def remove_duplicates(nums: List[int]) -> int:
     """
     Remove duplicates from sorted array in-place.

@@ -11,6 +11,22 @@ Space Complexity: O(1) - in-place modification
 
 from typing import List
 
+# ─────────────────────────────────────────────────────────────────────────
+# NAIVE APPROACH (Brute Force) - O(n) time | O(n) space
+# ─────────────────────────────────────────────────────────────────────────
+# INTERVIEW SCRIPT:
+#   1. Describe:   "Brute force creates a new list and copies elements from
+#                   end to start — O(n) time, O(n) space"
+#   2. Problem:    "Uses extra space for the new list; not in-place"
+#   3. Transition: "With two pointers from opposite ends we swap elements
+#                   in-place — same O(n) time but O(1) space"
+#
+# def reverse_list_naive(chars: List[str]) -> None:
+#     temp = [chars[i] for i in range(len(chars) - 1, -1, -1)]
+#     for i in range(len(chars)):
+#         chars[i] = temp[i]
+# ─────────────────────────────────────────────────────────────────────────
+
 def reverse_list(chars: List[str]) -> None:
     """
     Reverse a list in-place using two pointers.

@@ -1,13 +1,40 @@
 /**
  * Two Sum - Classic Complement Search Pattern
  * 
- * Time Complexity: O(n)
- * Space Complexity: O(n)
+ * Problem: Given an array of integers and a target, find two numbers that add up to the target.
+ *          Return the indices of the two numbers.
+ * 
+ * Pattern: Use hash map to store seen values and check for complement (target - current).
+ * 
+ * Time Complexity: O(n) - single pass through array
+ * Space Complexity: O(n) - hash map stores up to n elements
  */
 
 import java.util.*;
 
 public class Solution {
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // NAIVE APPROACH (Brute Force) - O(n²) time | O(1) space
+    // ─────────────────────────────────────────────────────────────────────────
+    // INTERVIEW SCRIPT:
+    //   1. Describe:   "Brute force checks every pair of numbers to see if they
+    //                   sum to target — O(n²) time with nested loops"
+    //   2. Problem:    "For n=10⁴, we'd do ~10⁸ comparisons; too slow"
+    //   3. Transition: "With a hash map we track seen values and check for the
+    //                   complement in O(1) — drops to O(n) time"
+    //
+    // public static int[] twoSumNaive(int[] nums, int target) {
+    //     for (int i = 0; i < nums.length; i++) {
+    //         for (int j = i + 1; j < nums.length; j++) {
+    //             if (nums[i] + nums[j] == target) {
+    //                 return new int[]{i, j};
+    //             }
+    //         }
+    //     }
+    //     return new int[0];  // No solution found
+    // }
+    // ─────────────────────────────────────────────────────────────────────────
     
     public static int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> seen = new HashMap<>();
@@ -25,6 +52,10 @@ public class Solution {
         return new int[0];
     }
     
+    /**
+ * LC 167: Two Sum II - Input Array Is Sorted
+ * NOTE: This problem requires 1-indexed positions (not 0-indexed like LC 1)
+ */
     public static int[] twoSumSorted(int[] numbers, int target) {
         int left = 0, right = numbers.length - 1;
         
@@ -47,11 +78,11 @@ public class Solution {
         Arrays.sort(nums);
         List<List<Integer>> result = new ArrayList<>();
         
-        for (int i = 0; i < nums.length - 2; i++) {
-            if (i > 0 && nums[i] == nums[i-1]) continue;
+        for (int i = 0; i < nums.length - 2; i++) { //-2 as two pointers will be used for the remaining two numbers
+            if (i > 0 && nums[i] == nums[i-1]) continue; //ignore duplicates, wont help get to 0
             
             int left = i + 1, right = nums.length - 1;
-            int target = -nums[i];
+            int target = -nums[i]; //since we're looking for 0 sum, the target for the two pointers is -nums[i]
             
             while (left < right) {
                 int sum = nums[left] + nums[right];
@@ -166,3 +197,5 @@ public class Solution {
         System.out.println("Two Sum Less Than K: " + twoSumLessThanK(new int[]{34,23,1,24,75,33,54,8}, 60));
     }
 }
+
+
